@@ -20,6 +20,7 @@ require 'src/states/BaseState'
 require 'src/states/StateStack'
 
 require 'src/states/game/PauseState'
+require 'src/states/game/PlayState'
 require 'src/states/game/StartState'
 
 

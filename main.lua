@@ -18,7 +18,7 @@ function love.load()
     -- Setting the StateStack. Definition found at src/states/StateStack.lua
     gStateStack = StateStack()
     -- Pushing the first state of the game into the StateStack (can also be StartState or any other)
-    gStateStack:push(StartState()) -- must be changed later
+    gStateStack:push(PlayState()) -- must be changed later
 end
 
 -- Using push to resize the game when the screen is resized
@@ -49,6 +49,7 @@ function love.draw()
         -- Here the only thing that needs to be drawn is from the StateStack
         gStateStack:render()
 
+        love.graphics.setColor(.5, .1, .3, 1)
         love.graphics.setFont(gFonts.small)
         love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
     push:finish()
