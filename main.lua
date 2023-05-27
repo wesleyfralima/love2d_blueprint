@@ -48,5 +48,8 @@ function love.draw()
     push:start()
         -- Here the only thing that needs to be drawn is from the StateStack
         gStateStack:render()
+
+        love.graphics.setFont(gFonts.small)
+        love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
     push:finish()
 end

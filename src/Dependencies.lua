@@ -33,8 +33,8 @@ p1_input = baton.new {
         right = {'key:right', 'key:d', 'axis:leftx+', 'button:dpright'},
         up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
         down = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
-        main_action = {'key:space', 'button:a', 'mouse:1'},
-        side_action = {'key:return', 'button:b', 'mouse:2'}
+        main_action = {'key:space', 'axis:triggerright+', 'mouse:1'},
+        side_action = {'key:return', 'axis:triggerleft+', 'mouse:2'}
     },
     pairs = {
         move = {'left', 'right', 'up', 'down'}
@@ -44,5 +44,8 @@ p1_input = baton.new {
 }
 
 gFonts = {
-    font = love.graphics.newFont('assets/fonts/font.ttf', 32),
+    small = love.graphics.newFont('assets/fonts/font.ttf', 8),
+    medium = love.graphics.newFont('assets/fonts/font.ttf', 16),
+    big = love.graphics.newFont('assets/fonts/font.ttf', 32),
+    huge = love.graphics.newFont('assets/fonts/font.ttf', 64),
 }
