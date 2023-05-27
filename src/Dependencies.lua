@@ -39,7 +39,8 @@ p1_input = baton.new {
     pairs = {
         move = {'left', 'right', 'up', 'down'}
     },
-    joystick = love.joystick.getJoysticks()[1]
+    joystick = love.joystick.getJoysticks()[1],
+    deadzone = 0.35
 }
 
 gFonts = {
