@@ -27,4 +27,21 @@ require 'src/states/game/StartState'
 -- variables
 --
 
--- none for now
+p1_input = baton.new {
+    controls = {
+        left = {'key:left', 'key:a', 'axis:leftx-', 'button:dpleft'},
+        right = {'key:right', 'key:d', 'axis:leftx+', 'button:dpright'},
+        up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
+        down = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
+        main_action = {'key:space', 'button:a', 'mouse:1'},
+        side_action = {'key:return', 'button:b', 'mouse:2'}
+    },
+    pairs = {
+        move = {'left', 'right', 'up', 'down'}
+    },
+    joystick = love.joystick.getJoysticks()[1]
+}
+
+gFonts = {
+    font = love.graphics.newFont('assets/fonts/font.ttf', 32),
+}

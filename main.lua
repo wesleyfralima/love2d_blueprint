@@ -39,6 +39,8 @@ function love.update(dt)
     Timer.update(dt)
     -- Updating the StateStack
     gStateStack:update(dt)
+    -- Update input from baton
+    p1_input:update()
 end
 
 function love.draw()
