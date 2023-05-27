@@ -11,6 +11,10 @@ function StartState:init()
 end
 
 function StartState:update(dt)
+    if p1_input:pressed('start') then
+        gStateStack:push(PauseState())
+    end
+    
     if p1_input:pressed('main_action') then
         self.points = self.points + self.pointsPerAct
     end

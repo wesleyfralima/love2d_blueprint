@@ -19,6 +19,7 @@ require 'src/constants'
 require 'src/states/BaseState'
 require 'src/states/StateStack'
 
+require 'src/states/game/PauseState'
 require 'src/states/game/StartState'
 
 
@@ -29,6 +30,7 @@ require 'src/states/game/StartState'
 
 p1_input = baton.new {
     controls = {
+        start = {'key:p', 'button:start'},
         left = {'key:left', 'key:a', 'axis:leftx-', 'button:dpleft'},
         right = {'key:right', 'key:d', 'axis:leftx+', 'button:dpright'},
         up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
