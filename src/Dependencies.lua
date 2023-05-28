@@ -69,3 +69,18 @@ gFonts = {
 gTextures = {
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
 }
+
+-- choose color according to game colors and style. Placeholder only
+-- from coolors.co ()
+gColors = {
+    ['ImperialRed'] = {249/255, 65/255, 68/255},
+    ['OrangeCrayola'] = {243/255, 114/255, 44/255},
+    ['CarrotOrange'] = {248/255, 150/255, 30/255},
+    ['Coral'] = {249/255, 132/255, 74/255},
+    ['Saffron'] = {249/255, 199/255, 79/255},
+    ['Pistachio'] = {144/255, 190/255, 109/255},
+    ['Zomp'] = {67/255, 170/255, 139/255},
+    ['DarkCyan'] = {77/255, 144/255, 142/255},
+    ['PaynesGray'] = {87/255, 117/255, 144/255},
+    ['Cerulean'] = {39/255, 125/255, 161/255},
+}

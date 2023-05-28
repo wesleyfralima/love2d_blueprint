@@ -3,7 +3,7 @@ require 'src/Dependencies'
 function love.load()
     -- Give a title for the window. More info at https://love2d.org/wiki/love.window.setTitle
     love.window.setTitle('Untitled Game')
-    -- Set the filter for the game (pixel art). More info at https://love2d.org/wiki/FilterMode
+    -- Set the filter for the game (for pixel art). More info at https://love2d.org/wiki/FilterMode
     love.graphics.setDefaultFilter('nearest', 'nearest')
     -- Setting a seed for randomness
     math.randomseed(os.time())
@@ -58,7 +58,7 @@ function love.draw()
         gStateStack:render()
 
         -- draw FPS
-        love.graphics.setColor(.5, .1, .3, 1)
+        love.graphics.setColor(gColors['Zomp'])
         love.graphics.setFont(gFonts.small)
         love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
 

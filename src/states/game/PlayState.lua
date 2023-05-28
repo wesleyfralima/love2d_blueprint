@@ -42,7 +42,7 @@ function PlayState:update(dt)
 end
 
 function PlayState:render()
-    love.graphics.setColor(.5, .1, .3, 1)
+    love.graphics.setColor(gColors['Zomp'])
     love.graphics.setFont(gFonts.medium)
     love.graphics.print(self.points, self.x, self.y)
 end
