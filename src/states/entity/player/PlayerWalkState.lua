@@ -13,11 +13,11 @@ function PlayerWalkState:update(dt)
 
     elseif x > 0 then 
         self.entity.direction = 'right'
-        self.entity.x = self.entity.x + math.ceil(self.entity.dx * dt)
+        self.entity.x = self.entity.x + math.ceil(x * self.entity.dx * dt)
 
     elseif x < 0 then 
         self.entity.direction = 'left'  
-        self.entity.x = self.entity.x + math.floor(self.entity.dx * dt)
+        self.entity.x = self.entity.x + math.floor(x * self.entity.dx * dt)
     end
 
     if p1_input:pressed('jump') then
