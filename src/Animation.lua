@@ -20,6 +20,10 @@ function Animation:init(def)
     self.timesPlayed = 0
 end
 
+function Animation:enter()
+    self:refresh()
+end
+
 function Animation:refresh()
     self.timer = 0
     self.currentFrame = 1

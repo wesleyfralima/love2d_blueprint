@@ -25,6 +25,7 @@ end
 
 function Entity:changeAnimation(name)
     self.currentAnimation = self.animations[name]
+    self.currentAnimation:enter()
 end
 
 function Entity:createAnimations(animations)
