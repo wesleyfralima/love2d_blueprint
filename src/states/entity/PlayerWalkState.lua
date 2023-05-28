@@ -1,29 +1,23 @@
 PlayerWalkState = Class{__includes = EntityWalkState}
 
-function PlayerWalkState:init(entity)
-    EntityWalkState.init(self, entity)
-end
-
 function PlayerWalkState:update(dt)
-    if p1_input:down('right') or p1_input:down('left') then
 
-        local x, _ = p1_input:get('move')
+    -- this anim change is here only because of the bug where player
+    -- moonwalks sometimes when keys are pressed too close to one another
+    self.entity:changeAnimation('walk-'..self.entity.direction)
 
-        if x < 0 then
-            if self.entity.direction == 'right' then
-                self.entity:changeDirection('left')
-            end
+    local x, _ = p1_input:get('move')
 
-            self.entity.x = self.entity.x + math.floor(x*self.moveSpeed*dt)
-
-        elseif x > 0 then
-            if self.entity.direction == 'left' then
-                self.entity:changeDirection('right')
-            end
-
-            self.entity.x = self.entity.x + math.ceil(x*self.moveSpeed*dt)
-        end
-    else
+    if x == 0 then 
         self.entity:changeState('idle')
+
+    elseif x > 0 then 
+        self.entity.direction = 'right'
+        self.entity.x = self.entity.x + math.ceil(x * self.moveSpeed * dt)
+
+    elseif x < 0 then 
+        self.entity.direction = 'left'
+        self.entity.x = self.entity.x + math.floor(x * self.moveSpeed * dt)
     end
+
 end

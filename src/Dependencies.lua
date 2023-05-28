@@ -66,8 +66,7 @@ p1_input = baton.new {
         side_action = {'key:return', 'axis:triggerleft+', 'mouse:2'}
     },
     pairs = {
-        move = {'left', 'right','left', 'right'},
-        moveSelection = {'left', 'right', 'up', 'down'},
+        move = {'left', 'right','up', 'down'},
     },
     joystick = love.joystick.getJoysticks()[1],
     deadzone = 0.5

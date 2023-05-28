@@ -6,5 +6,5 @@ function EntityWalkState:init(entity)
 end
 
 function EntityWalkState:enter(entity)
-    self.entity:changeAnimation('walk')
+    self.entity:changeAnimation('walk-' .. self.entity.direction)
 end

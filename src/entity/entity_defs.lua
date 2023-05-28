@@ -11,13 +11,13 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 texture = 'player_idle'
             },
-            ['walk'] = {
+            ['walk-right'] = {
                 frames = {1, 2, 3, 4, 5, 6},
                 interval = 0.15,
                 texture = 'player_walk'
             },
             ['walk-left'] = {
-                frames = {1, 2, 3, 4, 5, 6},
+                frames = {7, 8, 9, 10, 11, 12},
                 interval = 0.15,
                 texture = 'player_walk'
             },

@@ -10,7 +10,8 @@ function PlayState:init()
         x = VIRTUAL_WIDTH / 2,
         y = VIRTUAL_HEIGHT / 2,
         width = 28,
-        height = 24
+        height = 24,
+        direction = 'right'
     }
 
     self.player.stateMachine = StateMachine {
