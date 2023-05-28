@@ -19,6 +19,9 @@ function love.load()
     gStateStack = StateStack()
     -- Pushing the first state of the game into the StateStack (can also be StartState or any other)
     gStateStack:push(PlayState()) -- must be changed later
+
+    game_paused = false
+    delta_time = 0
 end
 
 -- Using push to resize the game when the screen is resized
@@ -29,12 +32,17 @@ end
 -- Love function that keeps track of pressed keys in last frame
 function love.keypressed(key)
     if key == 'escape' then
-        love.event.quit() -- or the pause menu or the confirmation-to-exit state
+        if not game_paused then
+            gStateStack:push(PauseState())
+        end
     end
 end
 
 -- Normal love.update, which is executed once per frame
 function love.update(dt)
+    -- Sometimes it is useful to use dt outside an update function
+    delta_time = dt
+
     -- Updating the Timer variable. This is defined at Dependencies.lua
     Timer.update(dt)
     -- Updating the StateStack
@@ -46,11 +54,13 @@ end
 function love.draw()
     -- push is once again used to draw, instead of drawing everything alone
     push:start()
-        -- Here the only thing that needs to be drawn is from the StateStack
+        -- draw from the StateStack
         gStateStack:render()
 
+        -- draw FPS
         love.graphics.setColor(.5, .1, .3, 1)
         love.graphics.setFont(gFonts.small)
         love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
+
     push:finish()
 end
