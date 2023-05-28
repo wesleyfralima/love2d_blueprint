@@ -21,7 +21,9 @@ function Animation:init(def)
 end
 
 function Animation:enter()
-    self:refresh()
+    if self.looping == false and self.timesPlayed == 1 then
+        self:refresh()
+    end
 end
 
 function Animation:refresh()
@@ -56,4 +58,8 @@ end
 
 function Animation:getCurrentFrame()
     return self.frames[self.currentFrame]
+end
+
+function Animation:goToFrame(frame)
+    self.currentFrame = frame
 end

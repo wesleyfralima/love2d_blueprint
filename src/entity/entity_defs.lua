@@ -33,6 +33,16 @@ ENTITY_DEFS = {
                 texture = 'player_jump',
                 looping = false
             },
+            ['fall-right'] = {
+                frames = {1},
+                interval = 0.15,
+                texture = 'player_fall'
+            },
+            ['fall-left'] = {
+                frames = {2},
+                interval = 0.15,
+                texture = 'player_fall'
+            },
         }
     },
 }

@@ -31,10 +31,12 @@ require 'src/states/BaseState'
 require 'src/states/StateStack'
 
 require 'src/states/entity/EntityBaseState'
+require 'src/states/entity/EntityFallState'
 require 'src/states/entity/EntityIdleState'
 require 'src/states/entity/EntityJumpState'
 require 'src/states/entity/EntityWalkState'
 
+require 'src/states/entity/player/PlayerFallState'
 require 'src/states/entity/player/PlayerIdleState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerWalkState'
@@ -85,12 +87,14 @@ gFonts = {
 
 gTextures = {
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
+    ['player_fall'] = love.graphics.newImage('assets/img/player/fall.png'),
     ['player_idle'] = love.graphics.newImage('assets/img/player/idle.png'),
-    ['player_walk'] = love.graphics.newImage('assets/img/player/run.png'),
     ['player_jump'] = love.graphics.newImage('assets/img/player/jump.png'),
+    ['player_walk'] = love.graphics.newImage('assets/img/player/run.png'),
 }
 
 gFrames = {
+    ['player_fall'] = GenerateQuads(gTextures['player_fall'], 25, 28),
     ['player_idle'] = GenerateQuads(gTextures['player_idle'], 24, 28),
     ['player_walk'] = GenerateQuads(gTextures['player_walk'], 24, 28),
     ['player_jump'] = GenerateQuads(gTextures['player_jump'], 26, 31),
