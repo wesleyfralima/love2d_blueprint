@@ -10,19 +10,17 @@ function PlayerWalkState:update(dt)
         local x, _ = p1_input:get('move')
 
         if x < 0 then
-            if self.entity.direction == 1 then
-                self.entity:changeDirection()
+            if self.entity.direction == 'right' then
+                self.entity:changeDirection('left')
             end
 
-            self.entity.direction = -1
             self.entity.x = self.entity.x + math.floor(x*self.moveSpeed*dt)
 
         elseif x > 0 then
-            if self.entity.direction == -1 then
-                self.entity:changeDirection()
+            if self.entity.direction == 'left' then
+                self.entity:changeDirection('right')
             end
 
-            self.entity.direction = 1
             self.entity.x = self.entity.x + math.ceil(x*self.moveSpeed*dt)
         end
     else

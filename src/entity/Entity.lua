@@ -9,7 +9,7 @@ function Entity:init(def)
     self.width = def.width
     self.height = def.height
 
-    self.direction = 1
+    self.direction = 'right'
     
 end
 
@@ -42,9 +42,9 @@ function Entity:onInteract()
     
 end
 
-function Entity:changeDirection()
-    self.x = self.x + (self.width - 5) * self.direction
-    self.direction = self.direction * -1
+function Entity:changeDirection(direction)
+    --self.x = self.x + (self.width - 5) * self.direction
+    self.direction = direction
 end
 
 function Entity:processAI(params, dt)

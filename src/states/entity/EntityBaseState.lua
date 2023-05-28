@@ -12,5 +12,5 @@ function EntityBaseState:processAI(params, dt) end
 function EntityBaseState:render()
     local anim = self.entity.currentAnimation
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.entity.x), math.floor(self.entity.y), 0, self.entity.direction, 1)
+        math.floor(self.entity.x), math.floor(self.entity.y))
 end
