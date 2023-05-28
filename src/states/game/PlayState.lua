@@ -8,14 +8,20 @@ function PlayState:init()
     self.player = Player{
         animations = ENTITY_DEFS['player'].animations,
         x = VIRTUAL_WIDTH / 2,
-        y = VIRTUAL_HEIGHT / 2,
+        y = VIRTUAL_HEIGHT - 60,
         width = 28,
         height = 24,
-        direction = 'right'
+        direction = 'right',
+        dx = 75,
+        dy = 150,
     }
+
+    self.player.jumpMaxHeight = self.player.height * 1.5
+
 
     self.player.stateMachine = StateMachine {
         ['idle'] = function() return PlayerIdleState(self.player) end,
+        ['jump'] = function() return PlayerJumpState(self.player) end,
         ['walk'] = function() return PlayerWalkState(self.player) end,
     }
     self.player.stateMachine:change('idle')

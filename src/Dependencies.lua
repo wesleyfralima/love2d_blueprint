@@ -32,9 +32,11 @@ require 'src/states/StateStack'
 
 require 'src/states/entity/EntityBaseState'
 require 'src/states/entity/EntityIdleState'
+require 'src/states/entity/EntityJumpState'
 require 'src/states/entity/EntityWalkState'
 
 require 'src/states/entity/player/PlayerIdleState'
+require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerWalkState'
 
 require 'src/states/game/PauseState'
@@ -50,21 +52,22 @@ require 'src/states/game/StartState'
 p1_input = baton.new {
     controls = {
         -- options input
-        start = {'key:p', 'button:start'},
-        escape = {'key:escape'},
+        start           = {'key:p', 'button:start'},
+        escape          = {'key:escape'},
 
         -- menu related input
-        interact = {'key:return', 'button:a'},
+        interact        = {'key:return', 'button:a'},
 
         -- movement input
-        left = {'key:left', 'key:a', 'axis:leftx-', 'button:dpleft'},
-        right = {'key:right', 'key:d', 'axis:leftx+', 'button:dpright'},
-        up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
-        down = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
+        left            = {'key:left', 'key:a', 'axis:leftx-', 'button:dpleft'},
+        right           = {'key:right', 'key:d', 'axis:leftx+', 'button:dpright'},
+        up              = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
+        down            = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
 
         -- actions input
-        main_action = {'key:space', 'axis:triggerright+', 'mouse:1'},
-        side_action = {'key:return', 'axis:triggerleft+', 'mouse:2'}
+        main_action     = {'axis:triggerright+', 'mouse:1'},
+        side_action     = {'axis:triggerleft+', 'mouse:2'},
+        jump            = {'key:space', 'button:a'},
     },
     pairs = {
         move = {'left', 'right','up', 'down'},
@@ -84,11 +87,13 @@ gTextures = {
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
     ['player_idle'] = love.graphics.newImage('assets/img/player/idle.png'),
     ['player_walk'] = love.graphics.newImage('assets/img/player/run.png'),
+    ['player_jump'] = love.graphics.newImage('assets/img/player/jump.png'),
 }
 
 gFrames = {
     ['player_idle'] = GenerateQuads(gTextures['player_idle'], 24, 28),
     ['player_walk'] = GenerateQuads(gTextures['player_walk'], 24, 28),
+    ['player_jump'] = GenerateQuads(gTextures['player_jump'], 26, 31),
 }
 
 -- choose color according to game colors and style. Placeholder only

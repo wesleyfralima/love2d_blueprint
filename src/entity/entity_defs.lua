@@ -21,6 +21,18 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 texture = 'player_walk'
             },
+            ['jump-right'] = {
+                frames = {1, 2, 3},
+                interval = 0.15,
+                texture = 'player_jump',
+                looping = false
+            },
+            ['jump-left'] = {
+                frames = {4, 5, 6},
+                interval = 0.15,
+                texture = 'player_jump',
+                looping = false
+            },
         }
     },
 }

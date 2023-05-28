@@ -4,7 +4,14 @@ function Animation:init(def)
     self.frames = def.frames
     self.interval = def.interval
     self.texture = def.texture
-    self.looping = def.looping or true
+
+    if def.looping == false then
+        self.looping = false
+    elseif def.looping == true then
+        self.looping = true
+    else
+        self.looping = true
+    end
 
     self.timer = 0
     self.currentFrame = 1
@@ -25,7 +32,7 @@ function Animation:update(dt)
         return
     end
     -- no need to update if animation is only one frame
-    if self.frames == 1 then 
+    if #self.frames == 1 then 
         return 
     end
 

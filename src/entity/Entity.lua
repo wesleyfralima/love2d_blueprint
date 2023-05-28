@@ -10,6 +10,12 @@ function Entity:init(def)
     self.height = def.height
 
     self.direction = def.direction
+
+    -- temporary (love.physics will be used later)
+    self.dx = def.dx
+    self.dy = def.dy
+
+    self.jumpMaxHeight = def.jumpMaxHeight
     
 end
 
@@ -28,7 +34,8 @@ function Entity:createAnimations(animations)
         animationsReturned[k] = Animation {
             texture = animationDef.texture,
             frames = animationDef.frames,
-            interval = animationDef.interval
+            interval = animationDef.interval,
+            looping = animationDef.looping
         }
     end
 
@@ -36,7 +43,8 @@ function Entity:createAnimations(animations)
 end
 
 --[[
-    Called when we interact with this entity, as by pressing enter.
+    Called when we interact with this entity, as by pressing
+    interact key (defined in Dependencies.lua).
 ]]
 function Entity:onInteract()
     
