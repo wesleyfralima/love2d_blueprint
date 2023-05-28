@@ -58,9 +58,7 @@ function love.draw()
         gStateStack:render()
 
         -- draw FPS
-        love.graphics.setColor(gColors['Zomp'])
-        love.graphics.setFont(gFonts.small)
-        love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
+        love.graphics.draw(formatFPS(), 10, 10)
 
     push:finish()
 end

@@ -2,6 +2,7 @@ PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
     self.points = 0
+    self.pointsText = nil
     self.pointsPerAct = 1
 
     self.moveSpeed = 75
@@ -43,6 +44,8 @@ end
 
 function PlayState:render()
     love.graphics.setColor(gColors['Zomp'])
-    love.graphics.setFont(gFonts.medium)
-    love.graphics.print(self.points, self.x, self.y)
+    self.pointsText = love.graphics.newText(gFonts.medium, self.points)
+    local w, h = getTextSize{text = self.pointsText}
+
+    love.graphics.draw(self.pointsText, self.x - w/2, self.y - h/2)
 end

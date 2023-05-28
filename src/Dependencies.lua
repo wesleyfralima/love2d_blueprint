@@ -15,6 +15,7 @@ wf = require 'assets/lib/windfield'
 -- Scripts
 --
 require 'src/constants'
+require 'src/utils'
 
 require 'src/gui/Menu'
 require 'src/gui/Panel'
