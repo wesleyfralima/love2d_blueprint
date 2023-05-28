@@ -5,10 +5,20 @@ function PlayState:init()
     self.pointsText = nil
     self.pointsPerAct = 1
 
-    self.moveSpeed = 75
+    self.player = Player{
+        animations = ENTITY_DEFS['player'].animations,
+        x = VIRTUAL_WIDTH / 2,
+        y = VIRTUAL_HEIGHT / 2,
+        width = 28,
+        height = 24
+    }
 
-    self.x = VIRTUAL_WIDTH / 2
-    self.y = VIRTUAL_HEIGHT / 2
+    self.player.stateMachine = StateMachine {
+        ['idle'] = function() return PlayerIdleState(self.player) end,
+        ['walk'] = function() return PlayerWalkState(self.player) end,
+    }
+    self.player.stateMachine:change('idle')
+
 end
 
 function PlayState:update(dt)
@@ -24,28 +34,9 @@ function PlayState:update(dt)
         self.points = self.points - self.pointsPerAct
     end
 
-    if p1_input:down('move') then
-        local x, y = p1_input:get('move')
-
-        if x < 0 then
-            self.x = self.x + math.floor(x*self.moveSpeed*dt)
-        elseif x > 0 then
-            self.x = self.x + math.ceil(x*self.moveSpeed*dt)
-        end
-
-        if y < 0 then
-            self.y = self.y + math.floor(y*self.moveSpeed*dt)
-        elseif y > 0 then
-            self.y = self.y + math.ceil(y*self.moveSpeed*dt)
-        end
-
-    end
+    self.player:update(dt)
 end
 
 function PlayState:render()
-    love.graphics.setColor(gColors['Zomp'])
-    self.pointsText = love.graphics.newText(gFonts.medium, self.points)
-    local w, h = getTextSize{text = self.pointsText}
-
-    love.graphics.draw(self.pointsText, self.x - w/2, self.y - h/2)
+    self.player:render()
 end

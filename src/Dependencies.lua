@@ -14,8 +14,14 @@ wf = require 'assets/lib/windfield'
 --
 -- Scripts
 --
+require 'src/Animation'
 require 'src/constants'
+require 'src/StateMachine'
 require 'src/utils'
+
+require 'src/entity/entity_defs'
+require 'src/entity/Entity'
+require 'src/entity/Player'
 
 require 'src/gui/Menu'
 require 'src/gui/Panel'
@@ -23,6 +29,12 @@ require 'src/gui/Selection'
 
 require 'src/states/BaseState'
 require 'src/states/StateStack'
+
+require 'src/states/entity/EntityBaseState'
+require 'src/states/entity/EntityIdleState'
+require 'src/states/entity/EntityWalkState'
+require 'src/states/entity/PlayerIdleState'
+require 'src/states/entity/PlayerWalkState'
 
 require 'src/states/game/PauseState'
 require 'src/states/game/PlayState'
@@ -54,10 +66,11 @@ p1_input = baton.new {
         side_action = {'key:return', 'axis:triggerleft+', 'mouse:2'}
     },
     pairs = {
-        move = {'left', 'right', 'up', 'down'}
+        move = {'left', 'right','left', 'right'},
+        moveSelection = {'left', 'right', 'up', 'down'},
     },
     joystick = love.joystick.getJoysticks()[1],
-    deadzone = 0.35
+    deadzone = 0.5
 }
 
 gFonts = {
@@ -69,6 +82,13 @@ gFonts = {
 
 gTextures = {
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
+    ['player_idle'] = love.graphics.newImage('assets/img/player/idle.png'),
+    ['player_walk'] = love.graphics.newImage('assets/img/player/run.png'),
+}
+
+gFrames = {
+    ['player_idle'] = GenerateQuads(gTextures['player_idle'], 24, 28),
+    ['player_walk'] = GenerateQuads(gTextures['player_walk'], 24, 28),
 }
 
 -- choose color according to game colors and style. Placeholder only
