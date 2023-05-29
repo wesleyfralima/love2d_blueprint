@@ -13,13 +13,14 @@ function PlayState:init()
         height = 24,
         direction = 'right',
         dx = 75,
-        dy = 150,
+        dy = 100,
     }
 
     self.player.jumpMaxHeight = self.player.height * 1.5
 
 
     self.player.stateMachine = StateMachine {
+        ['fall'] = function() return PlayerFallState(self.player) end,
         ['idle'] = function() return PlayerIdleState(self.player) end,
         ['jump'] = function() return PlayerJumpState(self.player) end,
         ['walk'] = function() return PlayerWalkState(self.player) end,
