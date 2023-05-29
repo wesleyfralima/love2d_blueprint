@@ -20,10 +20,8 @@ function Animation:init(def)
     self.timesPlayed = 0
 end
 
-function Animation:enter()
-    if self.looping == false and self.timesPlayed == 1 then
-        self:refresh()
-    end
+function Animation:exit()
+    self:refresh()
 end
 
 function Animation:refresh()

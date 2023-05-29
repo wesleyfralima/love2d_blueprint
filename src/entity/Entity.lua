@@ -24,8 +24,11 @@ function Entity:changeState(name)
 end
 
 function Entity:changeAnimation(name)
+    if self.currentAnimation then
+        self.currentAnimation:exit()
+    end
+    
     self.currentAnimation = self.animations[name]
-    self.currentAnimation:enter()
 end
 
 function Entity:createAnimations(animations)
