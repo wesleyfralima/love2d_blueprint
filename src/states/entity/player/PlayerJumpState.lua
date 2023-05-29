@@ -1,7 +1,7 @@
-PlayerJumpState = Class{__includes = EntityJumpState}
+PlayerJumpState = Class{__includes = EntityBaseState}
 
 function PlayerJumpState:enter()
-    EntityJumpState.enter(self)
+    EntityBaseState.enter(self)
     self.entity.initialY = self.entity.y
 end
 

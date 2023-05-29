@@ -1,4 +1,4 @@
-PlayerWalkState = Class{__includes = EntityWalkState}
+PlayerWalkState = Class{__includes = EntityBaseState}
 
 function PlayerWalkState:update(dt)
     

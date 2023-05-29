@@ -1,4 +1,4 @@
-PlayerIdleState = Class{__includes = EntityIdleState}
+PlayerIdleState = Class{__includes = EntityBaseState}
 
 function PlayerIdleState:update(dt)
 

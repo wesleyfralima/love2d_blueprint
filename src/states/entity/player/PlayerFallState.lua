@@ -1,7 +1,7 @@
-PlayerFallState = Class{__includes = EntityFallState}
+PlayerFallState = Class{__includes = EntityBaseState}
 
 function PlayerFallState:enter()
-    EntityFallState.enter(self)
+    EntityBaseState.enter(self)
     self.entity.initialY = self.entity.y
 end
 
@@ -9,7 +9,7 @@ function PlayerFallState:update(dt)
 
     -- this is so we can change direction in the air
     -- needs to be better approached
-    self.entity:changeAnimation('fall-' .. self.entity.direction)
+    -- self.entity:changeAnimation('fall-' .. self.entity.direction)
     
     if self.entity.y > (self.entity.initialY + self.entity.jumpMaxHeight) then
         self.entity:changeState('idle')

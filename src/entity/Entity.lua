@@ -23,12 +23,8 @@ function Entity:changeState(name)
     self.stateMachine:change(name)
 end
 
-function Entity:changeAnimation(name)
-    if self.currentAnimation then
-        self.currentAnimation:exit()
-    end
-    
-    self.currentAnimation = self.animations[name]
+function Entity:changeAnimation(animation)
+    self.currentAnimation = animation
 end
 
 function Entity:createAnimations(animations)

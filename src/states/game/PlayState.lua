@@ -20,10 +20,10 @@ function PlayState:init()
 
 
     self.player.stateMachine = StateMachine {
-        ['fall'] = function() return PlayerFallState(self.player) end,
-        ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['jump'] = function() return PlayerJumpState(self.player) end,
-        ['walk'] = function() return PlayerWalkState(self.player) end,
+        ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
+        ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
+        ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
+        ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
     }
     self.player.stateMachine:change('idle')
 
