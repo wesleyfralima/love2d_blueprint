@@ -2,15 +2,9 @@ PlayerIdleState = Class{__includes = EntityBaseState}
 
 function PlayerIdleState:update(dt)
 
-    if p1_input:down('right') and p1_input:down('left') then
-        -- do nothing
-        
-    elseif p1_input:down('right') then
-        self.entity.direction = 'right'
-        self.entity:changeState('walk')
+    local x, y = p1_input:get('move')
 
-    elseif p1_input:down('left') then
-        self.entity.direction = 'left'
+    if x ~= 0 then
         self.entity:changeState('walk')
     end
 

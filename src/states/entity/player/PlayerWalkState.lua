@@ -6,9 +6,11 @@ function PlayerWalkState:update(dt)
 
     if x == 0 then 
         self.entity:changeState('idle')
-    else
-        self.entity:processMovement(x, y)
     end
+
+    self:assertRightXAndDirection(x, self.entity.direction)
+
+    self.entity:processMovement(x, y)
 
     if p1_input:pressed('jump') then
         self.entity:changeState('jump')

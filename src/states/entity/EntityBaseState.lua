@@ -30,3 +30,11 @@ function EntityBaseState:render()
         math.floor(self.entity.x), 
         math.floor(self.entity.y))
 end
+
+function EntityBaseState:assertRightXAndDirection(x)
+    if x == 0 or (x < 0 and self.entity.direction == 'left') or (x > 0 and self.entity.direction == 'right') then
+        return
+    end
+    self.entity:changeDirection(x)
+    self.entity:changeAnimationOnState(self.name .. '-' .. self.entity.direction)
+end

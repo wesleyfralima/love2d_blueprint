@@ -12,7 +12,6 @@ function Entity:init(def)
 
     self.direction = def.direction
     self.lastDirection = 0
-    self.changedDirection = false
 
     -- temporary (love.physics will be used later)
     self.dx = def.dx
@@ -30,10 +29,10 @@ function Entity:changeAnimation(animation)
     self.currentAnimation = animation
 end
 
-function Entity:changeDirection()
-    if self.direction == 'right' then
+function Entity:changeDirection(x)
+    if x < 0 then
         self.direction = 'left'
-    else
+    elseif x > 0 then
         self.direction = 'right'
     end
 end
