@@ -26,6 +26,11 @@ function EntityBaseState:enter()
 end
 
 function EntityBaseState:render()
+    
+    if self.entity.currentAnimation == nil then
+        self.entity:changeAnimationOnState(self.name .. '-' .. self.entity.direction)
+    end
+
     self.entity.currentAnimation:draw(gTextures['player_' .. self.name], 
         math.floor(self.entity.x), 
         math.floor(self.entity.y))
