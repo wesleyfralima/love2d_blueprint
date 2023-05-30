@@ -6,26 +6,19 @@ function PlayerFallState:enter()
 end
 
 function PlayerFallState:update(dt)
+    self.entity.y = self.entity.y + (self.entity.dy * dt)
 
-    -- this is so we can change direction in the air
-    -- needs to be better approached
-    -- self.entity:changeAnimation('fall-' .. self.entity.direction)
-    
     if self.entity.y > (self.entity.initialY + self.entity.jumpMaxHeight) then
         self.entity:changeState('idle')
     end
 
-    self.entity.y = self.entity.y + (self.entity.dy * dt)
+    local x, y = p1_input:get('move')
+    x, y = self.entity:processMovement(x, y)
 
-    local x, _ = p1_input:get('move')
+    self.entity.lastDirection = self.entity.direction == 'right' and 1 or -1
 
-    if x > 0 then 
-        self.entity.direction = 'right'
-        self.entity.x = self.entity.x + math.ceil(x * self.entity.dx * dt)
-
-    elseif x < 0 then 
-        self.entity.direction = 'left'
-        self.entity.x = self.entity.x + math.floor(x * self.entity.dx * dt)
+    if self.entity.lastDirection ~= x and x ~= 0 then
+        self.entity:changeDirection()
+        self.entity:changeAnimationOnState(self.name .. '-' .. self.entity.direction)
     end
-
 end

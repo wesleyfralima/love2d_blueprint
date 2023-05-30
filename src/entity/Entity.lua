@@ -2,6 +2,7 @@ Entity = Class{}
 
 function Entity:init(def)
     self.animations = self:createAnimations(def.animations)
+    self.animationsOnState = {}
 
     self.x = def.x
     self.y = def.y
@@ -10,6 +11,8 @@ function Entity:init(def)
     self.height = def.height
 
     self.direction = def.direction
+    self.lastDirection = 0
+    self.changedDirection = false
 
     -- temporary (love.physics will be used later)
     self.dx = def.dx
@@ -25,6 +28,18 @@ end
 
 function Entity:changeAnimation(animation)
     self.currentAnimation = animation
+end
+
+function Entity:changeDirection()
+    if self.direction == 'right' then
+        self.direction = 'left'
+    else
+        self.direction = 'right'
+    end
+end
+
+function Entity:changeAnimationOnState(name)
+    self.currentAnimation = self.animationsOnState[name]
 end
 
 function Entity:createAnimations(animations)
@@ -55,8 +70,11 @@ function Entity:processAI(params, dt)
 end
 
 function Entity:update(dt)
-    self.currentAnimation:update(dt)
     self.stateMachine:update(dt)
+
+    for _, anim in pairs(self.animationsOnState) do
+        anim:update(dt)
+    end
 end
 
 function Entity:render()
