@@ -46,12 +46,14 @@ function Entity:createAnimations(animations)
     local animationsReturned = {}
 
     for k, animationDef in pairs(animations) do
-        animationsReturned[k] = Animation {
-            texture = animationDef.texture,
-            frames = animationDef.frames,
-            interval = animationDef.interval,
-            looping = animationDef.looping
-        }
+        animationsReturned[k] = anim8.newAnimation(
+            gGrids[animationDef.texture](
+                animationDef.framesCol,
+                animationDef.framesRow
+            ), 
+            animationDef.interval,
+            animationDef.onloop
+        )
     end
 
     return animationsReturned

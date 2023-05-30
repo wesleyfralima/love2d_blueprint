@@ -2,44 +2,52 @@ ENTITY_DEFS = {
     ['player'] = {
         animations = {
             ['idle-right'] = {
-                frames = {1, 2, 3, 4, 5},
+                framesCol = '1-5',
+                framesRow = 1,
                 interval = 0.15,
                 texture = 'player_idle'
             },
             ['idle-left'] = {
-                frames = {6, 7, 8, 9, 10},
+                framesCol = '1-5',
+                framesRow = 2,
                 interval = 0.15,
                 texture = 'player_idle'
             },
             ['walk-right'] = {
-                frames = {1, 2, 3, 4, 5, 6},
+                framesCol = '1-6',
+                framesRow = 1,
                 interval = 0.15,
                 texture = 'player_walk'
             },
             ['walk-left'] = {
-                frames = {7, 8, 9, 10, 11, 12},
+                framesCol = '1-6',
+                framesRow = 2,
                 interval = 0.15,
                 texture = 'player_walk'
             },
             ['jump-right'] = {
-                frames = {1, 2, 3},
+                framesCol = '1-3',
+                framesRow = 1,
                 interval = 0.15,
                 texture = 'player_jump',
-                looping = false
+                onloop = 'pauseAtEnd'
             },
             ['jump-left'] = {
-                frames = {4, 5, 6},
+                framesCol = '1-3',
+                framesRow = 2,
                 interval = 0.15,
                 texture = 'player_jump',
-                looping = false
+                onloop = 'pauseAtEnd'
             },
             ['fall-right'] = {
-                frames = {1},
+                framesCol = 1,
+                framesRow = 1,
                 interval = 0.15,
                 texture = 'player_fall'
             },
             ['fall-left'] = {
-                frames = {2},
+                framesCol = 1,
+                framesRow = 2,
                 interval = 0.15,
                 texture = 'player_fall'
             },

@@ -97,11 +97,16 @@ local Gridmt = {
   __call  = Grid.getFrames
 }
 
-local function newGrid(frameWidth, frameHeight, imageWidth, imageHeight, left, top, border)
+-- I changed this method. Now it requires an image and gets its w and h
+local function newGrid(image, frameWidth, frameHeight, left, top, border)
   assertPositiveInteger(frameWidth,  "frameWidth")
   assertPositiveInteger(frameHeight, "frameHeight")
-  assertPositiveInteger(imageWidth,  "imageWidth")
-  assertPositiveInteger(imageHeight, "imageHeight")
+
+  local imageWidth = image:getWidth()
+  local imageHeight = image:getHeight()
+
+  assertPositiveInteger(imageWidth,  "imageWidth (check image)")
+  assertPositiveInteger(imageHeight, "imageHeight (check image)")
 
   left   = left   or 0
   top    = top    or 0
@@ -183,6 +188,7 @@ local function newAnimation(frames, durations, onLoop)
       totalDuration  = totalDuration,
       onLoop         = onLoop,
       timer          = 0,
+      timerOnPause   = 0, -- I added this
       position       = 1,
       status         = "playing",
       flippedH       = false,
@@ -238,7 +244,13 @@ function Animation:update(dt)
 end
 
 function Animation:pause()
+  self.timerOnPause = self.timer -- I added this
   self.status = "paused"
+end
+
+function Animation:resume()
+  self.timer = self.timerOnPause -- I added this
+  self.status = "playing"
 end
 
 function Animation:gotoFrame(position)
@@ -247,19 +259,17 @@ function Animation:gotoFrame(position)
 end
 
 function Animation:pauseAtEnd()
+  self:pause() -- I changed the order of this in this function.
   self.position = #self.frames
   self.timer = self.totalDuration
-  self:pause()
+  -- Originaly it was here
 end
 
 function Animation:pauseAtStart()
+  self:pause() -- I changed the order of this in this function.
   self.position = 1
   self.timer = 0
-  self:pause()
-end
-
-function Animation:resume()
-  self.status = "playing"
+  -- Originaly it was here
 end
 
 function Animation:draw(image, x, y, r, sx, sy, ox, oy, kx, ky)

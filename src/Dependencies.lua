@@ -14,7 +14,6 @@ wf = require 'assets/lib/windfield'
 --
 -- Scripts
 --
-require 'src/Animation'
 require 'src/constants'
 require 'src/StateMachine'
 require 'src/utils'
@@ -93,11 +92,11 @@ gTextures = {
     ['player_walk'] = love.graphics.newImage('assets/img/player/run.png'),
 }
 
-gFrames = {
-    ['player_fall'] = GenerateQuads(gTextures['player_fall'], 25, 28),
-    ['player_idle'] = GenerateQuads(gTextures['player_idle'], 24, 28),
-    ['player_walk'] = GenerateQuads(gTextures['player_walk'], 24, 28),
-    ['player_jump'] = GenerateQuads(gTextures['player_jump'], 26, 31),
+gGrids = {
+    ['player_fall'] = anim8.newGrid(gTextures['player_fall'], 25, 28),
+    ['player_idle'] = anim8.newGrid(gTextures['player_idle'], 24, 28),
+    ['player_walk'] = anim8.newGrid(gTextures['player_walk'], 24, 28),
+    ['player_jump'] = anim8.newGrid(gTextures['player_jump'], 26, 31),
 }
 
 -- choose color according to game colors and style. Placeholder only

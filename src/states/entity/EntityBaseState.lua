@@ -19,14 +19,14 @@ function EntityBaseState:enter()
     }
 
     for _, anim in pairs(self.entity.animationsOnState) do
-        anim:refresh()
+        anim:resume()
     end
     
     self.entity:changeAnimation(self.entity.animationsOnState[self.name .. '-' .. self.entity.direction])
 end
 
 function EntityBaseState:render()
-    local anim = self.entity.currentAnimation
-    love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.entity.x), math.floor(self.entity.y))
+    self.entity.currentAnimation:draw(gTextures['player_' .. self.name], 
+        math.floor(self.entity.x), 
+        math.floor(self.entity.y))
 end

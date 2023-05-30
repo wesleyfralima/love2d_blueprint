@@ -16,7 +16,7 @@ function PlayState:init()
         dy = 100,
     }
 
-    self.player.jumpMaxHeight = self.player.height * 1.5
+    self.player.jumpMaxHeight = self.player.height * 2
 
 
     self.player.stateMachine = StateMachine {
