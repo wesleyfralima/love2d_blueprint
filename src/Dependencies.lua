@@ -44,6 +44,7 @@ require 'src/states/game/PauseState'
 require 'src/states/game/PlayState'
 require 'src/states/game/StartState'
 
+require 'src/world/Level'
 
 
 --
