@@ -1,0 +1,42 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "maps/test_map.tmx",
+    "expandedProjectPaths": [
+        "maps",
+        "."
+    ],
+    "fileStates": {
+        "maps/test_map.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 457,
+                "y": 262
+            }
+        },
+        "maps/test_map.tmx#terrain": {
+            "scaleInDock": 1
+        },
+        "tilesets/terrain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Ley/Documents/Projects/Games/love2d/love2d_blueprint/assets/tiled/maps",
+    "last.imagePath": "C:/Users/Ley/Documents/Projects/Games/love2d/love2d_blueprint/assets/img",
+    "map.lastUsedExportFilter": "Lua files (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "maps/test_map.tmx"
+    ],
+    "project": "tiled_project.tiled-project",
+    "recentFiles": [
+        "maps/test_map.tmx",
+        "tilesets/terrain.tsx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx"
+}

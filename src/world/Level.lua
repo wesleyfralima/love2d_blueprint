@@ -33,13 +33,21 @@ function Level:init(player, defs)
         ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
     }
 
-    self.ground = self.world:newRectangleCollider(
-        -10,
-        VIRTUAL_HEIGHT - 50,
-        VIRTUAL_WIDTH + 20,
-        15
-    )
-    self.ground:setType('static')
+    self.map = sti('assets/tiled/maps/test_map.lua')    
+
+    self.walls = {}
+
+    for i, obj in pairs(self.map.objects) do
+        local wall = self.world:newRectangleCollider(
+            obj.x,
+            obj.y,
+            obj.width,
+            obj.height
+        )
+        wall:setType('static')
+        table.insert(self.walls, wall)
+    end
+
 
     self.player.stateMachine:change('idle')
 end
@@ -53,6 +61,7 @@ function Level:update(dt)
 end
 
 function Level:render()
+    self.map:draw()
     self.player:render()
     -- self.world:draw()
 end
