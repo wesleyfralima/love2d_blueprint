@@ -60,20 +60,17 @@ function Level:update(dt)
     self.player.x = self.player.collider:getX() - self.player.width/2
     self.player.y = self.player.collider:getY() - self.player.height/2 - 4
 
-    camX = -self.player.x/2
-    camY = -self.player.y/2
+    camX = -self.player.x
+    camY = -self.player.y
 end
 
 function Level:render()
-
     love.graphics.push()
-
 	love.graphics.translate(VIRTUAL_WIDTH/2 + camX, VIRTUAL_HEIGHT/2 + camY)
-    love.graphics.translate( camX, camY )
 
     self.map:drawLayer(self.map.layers['ground'])
     self.player:render()
-    self.world:draw()
+    -- self.world:draw()
 
     love.graphics.pop()
 
