@@ -32,8 +32,8 @@ function EntityBaseState:render()
     end
 
     self.entity.currentAnimation:draw(gTextures['player_' .. self.name], 
-        math.floor(self.entity.x), 
-        math.floor(self.entity.y))
+        self.entity.x, 
+        self.entity.y)
 end
 
 function EntityBaseState:assertRightXAndDirection(x)

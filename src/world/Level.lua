@@ -4,13 +4,14 @@ function Level:init(player, defs)
 
     self.world = wf.newWorld(0, 200)
 
-    local collider = self.world:newBSGRectangleCollider(
+    local collider = self.world:newRectangleCollider(
         VIRTUAL_WIDTH / 2 + 3,
         VIRTUAL_HEIGHT / 2,
         24 - 6,
-        20,
-        4
+        20
     )
+
+    collider:setFriction(0)
 
     self.player = Player {
         animations = ENTITY_DEFS['player'].animations,
@@ -58,10 +59,22 @@ function Level:update(dt)
 
     self.player.x = self.player.collider:getX() - self.player.width/2
     self.player.y = self.player.collider:getY() - self.player.height/2 - 4
+
+    camX = -self.player.x/2
+    camY = -self.player.y/2
 end
 
 function Level:render()
-    self.map:draw()
+
+    love.graphics.push()
+
+	love.graphics.translate(VIRTUAL_WIDTH/2 + camX, VIRTUAL_HEIGHT/2 + camY)
+    love.graphics.translate( camX, camY )
+
+    self.map:drawLayer(self.map.layers['ground'])
     self.player:render()
-    -- self.world:draw()
+    self.world:draw()
+
+    love.graphics.pop()
+
 end
