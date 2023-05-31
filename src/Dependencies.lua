@@ -3,8 +3,10 @@
 --
 anim8 = require 'assets/lib/anim8'
 baton = require 'assets/lib/baton'
+camera = require 'assets/libs/camera'
 Class = require 'assets/lib/class'
 Event = require 'assets/lib/knife.event'
+gamera = require 'assets/lib/gamera'
 push = require 'assets/lib/push'
 sti = require 'assets/lib/sti'
 Timer = require 'assets/lib/knife.timer'
