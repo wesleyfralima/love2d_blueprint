@@ -8,4 +8,4 @@ WINDOW_HEIGHT = 720
 TILE_SIZE = 16
 
 -- constants for player jump movement
-PLAYER_JUMP_IMPULSE = -100
+PLAYER_JUMP_IMPULSE = -250

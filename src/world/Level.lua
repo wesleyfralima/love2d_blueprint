@@ -2,7 +2,7 @@ Level = Class{}
 
 function Level:init(player, defs)
 
-    self.world = wf.newWorld(0, 200)
+    self.world = wf.newWorld(0, 1000)
 
     local collider = self.world:newRectangleCollider(
         VIRTUAL_WIDTH / 2 + 3,

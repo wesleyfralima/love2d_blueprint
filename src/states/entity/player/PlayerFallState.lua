@@ -1,5 +1,10 @@
 PlayerFallState = Class{__includes = EntityBaseState}
 
+function PlayerFallState:enter()
+    EntityBaseState.enter(self)
+    self:processYMovement()
+end
+
 function PlayerFallState:update(dt)
     local _, vy = self.entity.collider:getLinearVelocity()
 
