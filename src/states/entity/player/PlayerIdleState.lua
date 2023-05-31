@@ -9,6 +9,7 @@ function PlayerIdleState:update(dt)
     end
 
     if p1_input:pressed('jump') then
+        self.entity.collider:applyLinearImpulse( 0, self.entity.dy )
         self.entity:changeState('jump')
     end
 

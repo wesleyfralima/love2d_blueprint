@@ -1,13 +1,14 @@
 Player = Class{__includes = Entity}
 
-function Player:processMovement(inputX, inputY)
+function Player:processXMovement(inputX)
+    local vx = 0
+    local _, vy = self.collider:getLinearVelocity()
+
     if inputX > 0 then 
-        self.x = self.x + math.ceil(inputX * self.dx * delta_time)
-        inputX = math.ceil(inputX)
+        vx = math.ceil(inputX) * self.dx
     elseif inputX < 0 then 
-        self.x = self.x + math.floor(inputX * self.dx * delta_time)
-        inputX = math.floor(inputX)
+        vx = math.floor(inputX) * self.dx
     end
 
-    return inputX, inputY
+    self.collider:setLinearVelocity(vx, vy)
 end
