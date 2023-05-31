@@ -113,3 +113,8 @@ gColors = {
     ['PaynesGray'] = {87/255, 117/255, 144/255},
     ['Cerulean'] = {39/255, 125/255, 161/255},
 }
+
+gPlayerJumpVelocity = -1 * (2 * PLAYER_JUMP_PEAK_HEIGHT) / TIME_TO_PLAYER_JUMP_PEAK
+
+gPlayerJumpGravity = (2 * PLAYER_JUMP_PEAK_HEIGHT) / (TIME_TO_PLAYER_JUMP_PEAK * TIME_TO_PLAYER_JUMP_PEAK)
+gPlayerFallGravity = (2 * PLAYER_JUMP_PEAK_HEIGHT) / (TIME_TO_PLAYER_DESCENT * TIME_TO_PLAYER_DESCENT)
