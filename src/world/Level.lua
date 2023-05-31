@@ -49,6 +49,11 @@ function Level:init(player, defs)
         table.insert(self.walls, wall)
     end
 
+    self.camera = Camera{
+        windowWidth = VIRTUAL_WIDTH,
+        windowHeight = VIRTUAL_HEIGHT,
+        following = self.player
+    }
 
     self.player.stateMachine:change('idle')
 end
@@ -62,16 +67,16 @@ function Level:update(dt)
 
     camX = -self.player.x
     camY = -self.player.y
+
+    self.camera:update(dt)
 end
 
 function Level:render()
-    love.graphics.push()
-	love.graphics.translate(VIRTUAL_WIDTH/2 + camX, VIRTUAL_HEIGHT/2 + camY)
+    self.camera:startSeeing()
 
-    self.map:drawLayer(self.map.layers['ground'])
-    self.player:render()
-    -- self.world:draw()
+        self.map:drawLayer(self.map.layers['ground'])
+        self.player:render()
+        -- self.world:draw()
 
-    love.graphics.pop()
-
+    self.camera:stopSeeing()
 end

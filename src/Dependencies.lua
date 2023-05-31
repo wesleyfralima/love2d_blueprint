@@ -14,6 +14,7 @@ wf = require 'assets/lib/windfield'
 --
 -- Scripts
 --
+require 'src/Camera'
 require 'src/constants'
 require 'src/StateMachine'
 require 'src/utils'
