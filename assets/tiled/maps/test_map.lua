@@ -68,7 +68,7 @@ return {
           width = 320,
           height = 96,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -81,7 +81,7 @@ return {
           width = 96,
           height = 32,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -94,7 +94,7 @@ return {
           width = 64,
           height = 32,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -107,7 +107,7 @@ return {
           width = 32,
           height = 32,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -120,7 +120,7 @@ return {
           width = 96,
           height = 96,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -133,7 +133,7 @@ return {
           width = 64,
           height = 64,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -146,7 +146,7 @@ return {
           width = 32,
           height = 96,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -159,7 +159,7 @@ return {
           width = 64,
           height = 64,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -172,7 +172,7 @@ return {
           width = 32,
           height = 32,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         },
         {
@@ -185,7 +185,7 @@ return {
           width = 96,
           height = 32,
           rotation = 0,
-          visible = true,
+          visible = false,
           properties = {}
         }
       }
