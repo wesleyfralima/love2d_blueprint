@@ -12,7 +12,6 @@ function PlayerFallState:update(dt)
         self.entity:changeState('idle')
     elseif vy > PLAYER_MAX_FALL_SPEED then
         self.entity.collider:setLinearVelocity(0, PLAYER_MAX_FALL_SPEED)
-        print('set')
     end
 
     local x, y = p1_input:get('move')
