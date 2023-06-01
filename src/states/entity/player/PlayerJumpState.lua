@@ -5,6 +5,8 @@ function PlayerJumpState:update(dt)
 
     if vy >= 0 then
         self.entity:changeState('fall')
+    elseif p1_input:released('jump') then
+        self.entity.collider:setLinearVelocity( 0, 0.5 * self.entity.dy )
     end
 
     local x, y = p1_input:get('move')
