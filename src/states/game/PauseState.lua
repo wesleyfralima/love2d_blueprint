@@ -1,21 +1,25 @@
 PauseState = Class{__includes = BaseState}
 
 function PauseState:init()
-    local width = 100
-    local height = 50
-    local x = VIRTUAL_WIDTH / 2 - width / 2
-    local y = VIRTUAL_HEIGHT / 2 - height / 2
-
     local items = {
         {
             text = 'Resume',
             onSelect = function() gStateStack:pop() end
         },
         {
+            text = 'Reset Game',
+            onSelect = function() love.load() end
+        },
+        {
             text = 'Quit Game',
             onSelect = function() love.event.quit() end
         }
     }
+
+    local width = 120
+    local height = 50
+    local x = VIRTUAL_WIDTH / 2 - width / 2
+    local y = VIRTUAL_HEIGHT / 2 - height / 2
 
     self.menu = Menu {
         canSelect = true,
