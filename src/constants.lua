@@ -9,3 +9,5 @@ TILE_SIZE = 16
 
 -- constants for player jump movement
 PLAYER_JUMP_IMPULSE = -250
+
+PLAYER_MAX_FALL_SPEED = 350

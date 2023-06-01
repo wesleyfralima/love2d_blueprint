@@ -2,7 +2,7 @@ PlayerFallState = Class{__includes = EntityBaseState}
 
 function PlayerFallState:enter()
     EntityBaseState.enter(self)
-    self:processYMovement()
+    self.entity.collider:applyLinearImpulse( 0, -0.1 * self.entity.dy )
 end
 
 function PlayerFallState:update(dt)
@@ -10,6 +10,9 @@ function PlayerFallState:update(dt)
 
     if vy == 0 then
         self.entity:changeState('idle')
+    elseif vy > PLAYER_MAX_FALL_SPEED then
+        self.entity.collider:setLinearVelocity(0, PLAYER_MAX_FALL_SPEED)
+        print('set')
     end
 
     local x, y = p1_input:get('move')

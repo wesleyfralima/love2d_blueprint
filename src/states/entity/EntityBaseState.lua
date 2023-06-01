@@ -43,7 +43,3 @@ function EntityBaseState:assertRightXAndDirection(x)
     self.entity:changeDirection(x)
     self.entity:changeAnimationOnState(self.name .. '-' .. self.entity.direction)
 end
-
-function EntityBaseState:processYMovement()
-    self.entity.collider:applyLinearImpulse( 0, -0.1 * self.entity.dy )
-end
