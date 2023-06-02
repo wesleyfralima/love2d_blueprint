@@ -72,11 +72,11 @@ function Level:update(dt)
 end
 
 function Level:render()
-    self.camera:startSeeing()
+    self.camera:startFilming()
 
         self.map:drawLayer(self.map.layers['ground'])
         self.player:render()
         -- self.world:draw()
 
-    self.camera:stopSeeing()
+    self.camera:stopFilming()
 end

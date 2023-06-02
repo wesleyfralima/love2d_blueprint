@@ -71,7 +71,7 @@ end
 --[[
     Starts the process of drawing through the camera's eyes
 ]]
-function Camera:startSeeing()
+function Camera:startFilming()
     love.graphics.push()
     love.graphics.rotate(-self.rotation)
     love.graphics.scale(1/self.scaleX, 1/self.scaleY)
@@ -84,6 +84,6 @@ end
 --[[
     Finishes the process of drawing through the camera's eyes
 ]]
-function Camera:stopSeeing()
+function Camera:stopFilming()
     love.graphics.pop()
 end
