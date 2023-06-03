@@ -21,7 +21,8 @@ local push = {
     pixelperfect = false,
     highdpi = true,
     canvas = true,
-    stencil = true
+    stencil = true,
+    vsync = true -- I added this
   }
   
 }
@@ -48,7 +49,8 @@ function push:setupScreen(WWIDTH, WHEIGHT, RWIDTH, RHEIGHT, settings)
   windowUpdateMode(self._RWIDTH, self._RHEIGHT, {
     fullscreen = self._fullscreen,
     resizable = self._resizable,
-    highdpi = self._highdpi
+    highdpi = self._highdpi,
+    vsync = self._vsync -- I added this
   })
 
   self:initValues()
