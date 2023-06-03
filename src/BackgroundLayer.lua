@@ -12,19 +12,25 @@ function BackgroundLayer:init(def)
     self.x = def.x
     self.y = def.y
 
+    self.lastX = self.x
+    self.lastY = self.y
+
     self.offsetX = 0
     self.offsetY = self.y
 end
 
 function BackgroundLayer:update(dt)
-
+    if math.abs(self.x - self.lastX) <= 2 then 
+        return 
+    end
+    
     local dx, _ = p1_input:get('move')
     
-    if dx > 0 then
-        self.offsetX = (self.offsetX + self.xSpeed * dt) % self.width
-    elseif dx < 0 then
-        self.offsetX = (self.offsetX - self.xSpeed * dt) % self.width
+    if dx ~= 0 then
+        self.offsetX = (self.offsetX + self.xSpeed * dt * dx) % self.width
+        self.lastX, self.lastY = self.x, self.y
     end
+
 end
 
 function BackgroundLayer:render()
