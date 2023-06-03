@@ -39,7 +39,12 @@ function love.keypressed(key)
     end
 
     if key == 'f' then
-        love.window.setFullscreen( gFullscreen )
+        push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+            fullscreen = not gFullscreen,
+            vsync = true,
+            resizable = true
+        })
+        
         gFullscreen = not gFullscreen
     end
 end
