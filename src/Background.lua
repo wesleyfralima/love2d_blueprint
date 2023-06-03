@@ -5,8 +5,9 @@ function Background:init(def)
     self:sort()
 end
 
-function Background:update(dt)
+function Background:update(dt, x, y)
     for i, layer in pairs(self.layers) do
+        layer:setPosition(x, y)
         layer:update(dt)
     end
 end

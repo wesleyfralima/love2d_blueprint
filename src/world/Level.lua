@@ -61,21 +61,21 @@ function Level:init(player, defs)
     local bg1 = BackgroundLayer{
         xSpeed = 60,
         ySpeed = 5,
-        image = gTextures['bg_yellow'],
+        image = 'bg_yellow',
         y = 300,
     }
 
     local bg2 = BackgroundLayer{
         xSpeed = 100,
         ySpeed = 10,
-        image = gTextures['bg_brown'],
+        image = 'bg_brown',
         y = 450,
     }
 
     local bg3 = BackgroundLayer{
         xSpeed = 150,
         ySpeed = 15,
-        image = gTextures['bg_blue'],
+        image = 'bg_blue',
         y = 500,
     }
 
@@ -88,7 +88,7 @@ function Level:update(dt)
     self.world:update(dt)
     self.player:update(dt)
     self.camera:update(dt)
-    self.background:update(dt)
+    self.background:update(dt, self.player.x, self.player.y)
 end
 
 function Level:render()
