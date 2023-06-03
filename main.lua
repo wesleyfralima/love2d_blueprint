@@ -22,6 +22,7 @@ function love.load()
 
     game_paused = false
     delta_time = 0
+    gFullscreen = false
 end
 
 -- Using push to resize the game when the screen is resized
@@ -35,6 +36,11 @@ function love.keypressed(key)
         if not game_paused then
             gStateStack:push(PauseState())
         end
+    end
+
+    if key == 'f' then
+        love.window.setFullscreen( gFullscreen )
+        gFullscreen = not gFullscreen
     end
 end
 
