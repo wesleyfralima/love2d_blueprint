@@ -39,8 +39,8 @@ end
 --]]
 function Camera:pointAt(x, y)
     if self.following ~= nil then return end
-    self.x = x
-    self.y = y
+    self.x = - x
+    self.y = - y
 end
 
 --[[

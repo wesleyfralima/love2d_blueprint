@@ -10,6 +10,13 @@ function Entity:init(def)
     self.width = def.width
     self.height = def.height
 
+    self.colliderWidthDifference = def.colliderWidthDifference or 0
+    self.colliderHeightDifference = def.colliderHeightDifference or 0
+
+
+    self.colliderOffsetX = 0
+    self.colliderOffsetY = 0
+
     self.direction = def.direction
 
     self.dx = def.dx
@@ -74,7 +81,7 @@ end
 function Entity:update(dt)
 
     self.x = self.collider:getX() - self.width/2
-    self.y = self.collider:getY() - self.height/2 -2
+    self.y = self.collider:getY() - self.height/2 - self.colliderHeightDifference
 
     for _, anim in pairs(self.animationsOnState) do
         anim:update(dt)

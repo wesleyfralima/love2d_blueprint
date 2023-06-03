@@ -109,17 +109,17 @@ gTextures = {
 }
 
 gGrids = {
-    ['player_fall-right'] = anim8.newGrid(gTextures['player_fall-right'], 25, 28),
-    ['player_fall-left'] = anim8.newGrid(gTextures['player_fall-left'], 25, 28),
+    ['player_fall-right'] = anim8.newGrid(gTextures['player_fall-right'], 25, 32),
+    ['player_fall-left'] = anim8.newGrid(gTextures['player_fall-left'], 25, 32),
 
-    ['player_idle-right'] = anim8.newGrid(gTextures['player_idle-right'], 24, 28),
-    ['player_idle-left'] = anim8.newGrid(gTextures['player_idle-left'], 24, 28),
+    ['player_idle-right'] = anim8.newGrid(gTextures['player_idle-right'], 24, 32),
+    ['player_idle-left'] = anim8.newGrid(gTextures['player_idle-left'], 24, 32),
 
-    ['player_walk-right'] = anim8.newGrid(gTextures['player_walk-right'], 25, 30),
-    ['player_walk-left'] = anim8.newGrid(gTextures['player_walk-left'], 25, 30),
+    ['player_walk-right'] = anim8.newGrid(gTextures['player_walk-right'], 25, 32),
+    ['player_walk-left'] = anim8.newGrid(gTextures['player_walk-left'], 25, 32),
 
-    ['player_jump-right'] = anim8.newGrid(gTextures['player_jump-right'], 26, 31),
-    ['player_jump-left'] = anim8.newGrid(gTextures['player_jump-left'], 26, 31),
+    ['player_jump-right'] = anim8.newGrid(gTextures['player_jump-right'], 26, 32),
+    ['player_jump-left'] = anim8.newGrid(gTextures['player_jump-left'], 26, 32),
 }
 
 -- choose color according to game colors and style. Placeholder only

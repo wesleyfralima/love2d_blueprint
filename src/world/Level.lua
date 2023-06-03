@@ -7,7 +7,7 @@ function Level:init(player, defs)
     local collider = self.world:newRectangleCollider(
         VIRTUAL_WIDTH / 2 + 3,
         VIRTUAL_HEIGHT / 2,
-        24 - 6,
+        18,
         20
     )
 
@@ -17,12 +17,13 @@ function Level:init(player, defs)
         animations = ENTITY_DEFS['player'].animations,
         x = 0,
         y = 0,
-        width = 25,
+        width = 24,
         height = 32,
         direction = 'right',
         dx = 150,
         dy = PLAYER_JUMP_IMPULSE,
-        collider = collider
+        collider = collider,
+        colliderHeightDifference = 5
     }
 
     self.player.jumpMaxHeight = self.player.height * 2
@@ -96,7 +97,12 @@ function Level:render()
         self.background:render()
         self.map:drawLayer(self.map.layers['ground'])
         self.player:render()
+
+        -- this draws the colliders
         -- self.world:draw()
+
+        -- this draws a box containing the player
+        -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
 
     self.camera:stopFilming()
 end
