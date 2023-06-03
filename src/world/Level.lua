@@ -86,13 +86,6 @@ end
 function Level:update(dt)
     self.world:update(dt)
     self.player:update(dt)
-
-    self.player.x = self.player.collider:getX() - self.player.width/2
-    self.player.y = self.player.collider:getY() - self.player.height/2 - 4
-
-    camX = -self.player.x
-    camY = -self.player.y
-
     self.camera:update(dt)
     self.background:update(dt)
 end

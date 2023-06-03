@@ -74,6 +74,10 @@ function Entity:processAI(params, dt)
 end
 
 function Entity:update(dt)
+
+    self.x = self.collider:getX() - self.width/2
+    self.y = self.collider:getY() - self.height/2 - 4
+
     self.stateMachine:update(dt)
 
     for _, anim in pairs(self.animationsOnState) do
