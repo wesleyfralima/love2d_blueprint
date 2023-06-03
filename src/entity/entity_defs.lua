@@ -3,53 +3,45 @@ ENTITY_DEFS = {
         animations = {
             ['idle-right'] = {
                 framesCol = '1-5',
-                framesRow = 1,
                 interval = 0.1,
-                texture = 'player_idle'
+                texture = 'player_idle-right'
             },
             ['idle-left'] = {
                 framesCol = '1-5',
-                framesRow = 2,
                 interval = 0.1,
-                texture = 'player_idle'
+                texture = 'player_idle-left'
             },
             ['walk-right'] = {
                 framesCol = '1-6',
-                framesRow = 1,
                 interval = 0.1,
-                texture = 'player_walk'
+                texture = 'player_walk-right'
             },
             ['walk-left'] = {
                 framesCol = '1-6',
-                framesRow = 2,
                 interval = 0.1,
-                texture = 'player_walk'
+                texture = 'player_walk-left'
             },
             ['jump-right'] = {
                 framesCol = '1-3',
-                framesRow = 1,
                 interval = 0.1,
-                texture = 'player_jump',
+                texture = 'player_jump-right',
                 onloop = 'pauseAtEnd'
             },
             ['jump-left'] = {
                 framesCol = '1-3',
-                framesRow = 2,
                 interval = 0.1,
-                texture = 'player_jump',
+                texture = 'player_jump-left',
                 onloop = 'pauseAtEnd'
             },
             ['fall-right'] = {
                 framesCol = 1,
-                framesRow = 1,
                 interval = 0.1,
-                texture = 'player_fall'
+                texture = 'player_fall-right'
             },
             ['fall-left'] = {
                 framesCol = 1,
-                framesRow = 2,
                 interval = 0.1,
-                texture = 'player_fall'
+                texture = 'player_fall-left'
             },
         }
     },

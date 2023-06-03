@@ -51,7 +51,7 @@ function Entity:createAnimations(animations)
         animationsReturned[k] = anim8.newAnimation(
             gGrids[animationDef.texture](
                 animationDef.framesCol,
-                animationDef.framesRow
+                1 -- row is always one
             ), 
             animationDef.interval,
             animationDef.onloop
@@ -76,7 +76,7 @@ end
 function Entity:update(dt)
 
     self.x = self.collider:getX() - self.width/2
-    self.y = self.collider:getY() - self.height/2 - 4
+    self.y = self.collider:getY() - self.height/2 -4
 
     self.stateMachine:update(dt)
 

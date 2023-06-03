@@ -31,7 +31,7 @@ function EntityBaseState:render()
         self.entity:changeAnimationOnState(self.name .. '-' .. self.entity.direction)
     end
 
-    self.entity.currentAnimation:draw(gTextures['player_' .. self.name], 
+    self.entity.currentAnimation:draw(gTextures['player_' .. self.name .. '-' .. self.entity.direction], 
         self.entity.x, 
         self.entity.y)
 end

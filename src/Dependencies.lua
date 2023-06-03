@@ -92,18 +92,34 @@ gTextures = {
     ['bg_blue'] = love.graphics.newImage('assets/img/bg_blue.png'),
     ['bg_brown'] = love.graphics.newImage('assets/img/bg_brown.png'),
     ['bg_yellow'] = love.graphics.newImage('assets/img/bg_yellow.png'),
+
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
-    ['player_fall'] = love.graphics.newImage('assets/img/player/fall.png'),
-    ['player_idle'] = love.graphics.newImage('assets/img/player/idle.png'),
-    ['player_jump'] = love.graphics.newImage('assets/img/player/jump.png'),
-    ['player_walk'] = love.graphics.newImage('assets/img/player/run.png'),
+
+    ['player_fall-right'] = love.graphics.newImage('assets/img/player/fall-right.png'),
+    ['player_fall-left'] = love.graphics.newImage('assets/img/player/fall-left.png'),
+
+    ['player_idle-right'] = love.graphics.newImage('assets/img/player/idle-right.png'),
+    ['player_idle-left'] = love.graphics.newImage('assets/img/player/idle-left.png'),
+
+    ['player_jump-right'] = love.graphics.newImage('assets/img/player/jump-right.png'),
+    ['player_jump-left'] = love.graphics.newImage('assets/img/player/jump-left.png'),
+
+    ['player_walk-right'] = love.graphics.newImage('assets/img/player/walk-right.png'),
+    ['player_walk-left'] = love.graphics.newImage('assets/img/player/walk-left.png'),
 }
 
 gGrids = {
-    ['player_fall'] = anim8.newGrid(gTextures['player_fall'], 25, 28),
-    ['player_idle'] = anim8.newGrid(gTextures['player_idle'], 24, 28),
-    ['player_walk'] = anim8.newGrid(gTextures['player_walk'], 24, 28),
-    ['player_jump'] = anim8.newGrid(gTextures['player_jump'], 26, 31),
+    ['player_fall-right'] = anim8.newGrid(gTextures['player_fall-right'], 25, 28),
+    ['player_fall-left'] = anim8.newGrid(gTextures['player_fall-left'], 25, 28),
+
+    ['player_idle-right'] = anim8.newGrid(gTextures['player_idle-right'], 24, 28),
+    ['player_idle-left'] = anim8.newGrid(gTextures['player_idle-left'], 24, 28),
+
+    ['player_walk-right'] = anim8.newGrid(gTextures['player_walk-right'], 25, 30),
+    ['player_walk-left'] = anim8.newGrid(gTextures['player_walk-left'], 25, 30),
+
+    ['player_jump-right'] = anim8.newGrid(gTextures['player_jump-right'], 26, 31),
+    ['player_jump-left'] = anim8.newGrid(gTextures['player_jump-left'], 26, 31),
 }
 
 -- choose color according to game colors and style. Placeholder only
