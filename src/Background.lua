@@ -17,8 +17,8 @@ function Background:render()
     end
 end
 
-function Background:addLayer(background)
-    table.insert(self.layers, background)
+function Background:addLayer(backgroundLayer)
+    table.insert(self.layers, backgroundLayer)
     self:sort()
 end
 

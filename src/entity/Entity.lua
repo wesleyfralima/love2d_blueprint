@@ -11,9 +11,7 @@ function Entity:init(def)
     self.height = def.height
 
     self.direction = def.direction
-    self.lastDirection = 0
 
-    -- temporary (love.physics will be used later)
     self.dx = def.dx
     self.dy = def.dy
 
@@ -76,13 +74,13 @@ end
 function Entity:update(dt)
 
     self.x = self.collider:getX() - self.width/2
-    self.y = self.collider:getY() - self.height/2 -4
-
-    self.stateMachine:update(dt)
+    self.y = self.collider:getY() - self.height/2 -2
 
     for _, anim in pairs(self.animationsOnState) do
         anim:update(dt)
     end
+
+    self.stateMachine:update(dt)
 end
 
 function Entity:render()
