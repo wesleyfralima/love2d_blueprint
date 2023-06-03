@@ -9,6 +9,7 @@ function BackgroundLayer:init(def)
     self.xSpeed = def.xSpeed
     -- self.ySpeed = def.ySpeed
 
+    self.x = def.x
     self.y = def.y
 
     self.offsetX = 0

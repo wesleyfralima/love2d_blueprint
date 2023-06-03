@@ -62,6 +62,7 @@ function Level:init(player, defs)
         xSpeed = 60,
         ySpeed = 5,
         image = 'bg_yellow',
+        x = 0,
         y = 300,
     }
 
@@ -69,6 +70,7 @@ function Level:init(player, defs)
         xSpeed = 100,
         ySpeed = 10,
         image = 'bg_brown',
+        x = 0,
         y = 450,
     }
 
@@ -76,6 +78,7 @@ function Level:init(player, defs)
         xSpeed = 150,
         ySpeed = 15,
         image = 'bg_blue',
+        x = 0,
         y = 500,
     }
 
