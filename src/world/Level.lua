@@ -15,8 +15,8 @@ function Level:init(player, defs)
 
     self.player = Player {
         animations = ENTITY_DEFS['player'].animations,
-        x = VIRTUAL_WIDTH / 2 + 3,
-        y = VIRTUAL_HEIGHT / 2,
+        x = 0,
+        y = 0,
         width = 24,
         height = 28,
         direction = 'right',
@@ -56,6 +56,31 @@ function Level:init(player, defs)
     }
 
     self.player.stateMachine:change('idle')
+
+    local bg1 = BackgroundLayer{
+        xSpeed = 60,
+        ySpeed = 5,
+        image = gTextures['bg_yellow'],
+        y = 300,
+    }
+
+    local bg2 = BackgroundLayer{
+        xSpeed = 100,
+        ySpeed = 10,
+        image = gTextures['bg_brown'],
+        y = 450,
+    }
+
+    local bg3 = BackgroundLayer{
+        xSpeed = 150,
+        ySpeed = 15,
+        image = gTextures['bg_blue'],
+        y = 500,
+    }
+
+    self.background = Background{
+        layers = {bg1, bg2, bg3}
+    }
 end
 
 function Level:update(dt)
@@ -69,11 +94,13 @@ function Level:update(dt)
     camY = -self.player.y
 
     self.camera:update(dt)
+    self.background:update(dt)
 end
 
 function Level:render()
     self.camera:startFilming()
 
+        self.background:render()
         self.map:drawLayer(self.map.layers['ground'])
         self.player:render()
         -- self.world:draw()

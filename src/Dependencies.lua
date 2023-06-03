@@ -14,6 +14,8 @@ wf = require 'assets/lib/windfield'
 --
 -- Scripts
 --
+require 'src/Background'
+require 'src/BackgroundLayer'
 require 'src/Camera'
 require 'src/constants'
 require 'src/StateMachine'
@@ -87,6 +89,9 @@ gFonts = {
 }
 
 gTextures = {
+    ['bg_blue'] = love.graphics.newImage('assets/img/bg_blue.png'),
+    ['bg_brown'] = love.graphics.newImage('assets/img/bg_brown.png'),
+    ['bg_yellow'] = love.graphics.newImage('assets/img/bg_yellow.png'),
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
     ['player_fall'] = love.graphics.newImage('assets/img/player/fall.png'),
     ['player_idle'] = love.graphics.newImage('assets/img/player/idle.png'),
