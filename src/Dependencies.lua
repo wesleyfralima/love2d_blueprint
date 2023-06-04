@@ -102,8 +102,8 @@ gTextures = {
         ['fall'] = { 
             love.graphics.newImage('assets/img/player/fall-right.png'),
             love.graphics.newImage('assets/img/player/fall-left.png'),
-            love.graphics.newImage('assets/img/player/fall-right.png'),
-            love.graphics.newImage('assets/img/player/fall-left.png')
+            love.graphics.newImage('assets/img/player/sword-fall-right.png'),
+            love.graphics.newImage('assets/img/player/sword-fall-left.png')
         },
         ['idle'] = {
             love.graphics.newImage('assets/img/player/idle-right.png'),
@@ -114,8 +114,8 @@ gTextures = {
         ['jump'] = {
             love.graphics.newImage('assets/img/player/jump-right.png'),
             love.graphics.newImage('assets/img/player/jump-left.png'),
-            love.graphics.newImage('assets/img/player/jump-right.png'),
-            love.graphics.newImage('assets/img/player/jump-left.png'),
+            love.graphics.newImage('assets/img/player/sword-jump-right.png'),
+            love.graphics.newImage('assets/img/player/sword-jump-left.png'),
         },
         ['walk'] = {
             love.graphics.newImage('assets/img/player/walk-right.png'),
@@ -131,8 +131,8 @@ gGrids = {
         ['fall'] = { 
             anim8.newGrid(gTextures['player']['fall'][1], 25, 32),
             anim8.newGrid(gTextures['player']['fall'][2], 25, 32),
-            anim8.newGrid(gTextures['player']['fall'][1], 25, 32),
-            anim8.newGrid(gTextures['player']['fall'][2], 25, 32),
+            anim8.newGrid(gTextures['player']['fall'][3], 38, 32),
+            anim8.newGrid(gTextures['player']['fall'][4], 38, 32),
         },
         ['idle'] = {
             anim8.newGrid(gTextures['player']['idle'][1], 24, 32),
@@ -143,8 +143,8 @@ gGrids = {
         ['jump'] = {
             anim8.newGrid(gTextures['player']['jump'][1], 26, 32),
             anim8.newGrid(gTextures['player']['jump'][2], 26, 32),
-            anim8.newGrid(gTextures['player']['jump'][1], 26, 32),
-            anim8.newGrid(gTextures['player']['jump'][2], 26, 32),
+            anim8.newGrid(gTextures['player']['jump'][3], 28, 32),
+            anim8.newGrid(gTextures['player']['jump'][4], 28, 32),
         },
         ['walk'] = {
             anim8.newGrid(gTextures['player']['walk'][1], 25, 32),

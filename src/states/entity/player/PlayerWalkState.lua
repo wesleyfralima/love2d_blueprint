@@ -20,7 +20,7 @@ function PlayerWalkState:update(dt)
         if self.entity.holding == SWORD then
 
             if self.entity.direction == LEFT then
-                self.entity.colliderOffsetX = -13
+                self.entity.colliderOffsetX = -15
             else
                 self.entity.colliderOffsetX = 0
             end
