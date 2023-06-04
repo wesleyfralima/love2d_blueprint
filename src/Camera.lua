@@ -49,8 +49,11 @@ end
     update() besause it is updated in Camera:update()
 --]]
 function Camera:follow()
-    self.x = - self.following.x
-    self.y = - self.following.y
+    local offsetX = self.following.width/2 or 0
+    local offsetY = self.following.height/4 or 0
+
+    self.x = - self.following.x - offsetX
+    self.y = - self.following.y - offsetY
 end
 
 --[[
