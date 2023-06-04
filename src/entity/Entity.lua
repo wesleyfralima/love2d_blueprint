@@ -28,8 +28,6 @@ function Entity:init(def)
         self.isHolding = true
     end
 
-    print(self.isHolding )
-
     self.dx = def.dx
     self.dy = def.dy
 
