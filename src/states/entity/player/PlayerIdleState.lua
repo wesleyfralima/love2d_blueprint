@@ -13,9 +13,21 @@ function PlayerIdleState:update(dt)
         self.entity:changeState('jump')
     end
 
-    if p1_input:pressed('main_action') then
-        self.entity.holding = SWORD
-        --self:enter()
-    end
+    if self.entity.isHolding then
+        if self.entity.holding == SWORD then
 
+            if self.entity.direction == LEFT then
+                self.entity.colliderOffsetX = -13
+            else
+                self.entity.colliderOffsetX = 0
+            end
+
+            if p1_input:pressed('attack') then
+                print('sword slash')
+            end
+        end
+
+    else
+        self.entity.colliderOffsetX = 0
+    end
 end
