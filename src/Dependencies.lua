@@ -129,28 +129,28 @@ gTextures = {
 gGrids = {
     ['player'] = {
         ['fall'] = { 
-            anim8.newGrid(gTextures['player']['fall'][1], 25, 32),
-            anim8.newGrid(gTextures['player']['fall'][2], 25, 32),
-            anim8.newGrid(gTextures['player']['fall'][3], 38, 32),
-            anim8.newGrid(gTextures['player']['fall'][4], 38, 32),
+            anim8.newGrid(gTextures['player']['fall'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['fall'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['fall'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['fall'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
         },
         ['idle'] = {
-            anim8.newGrid(gTextures['player']['idle'][1], 24, 32),
-            anim8.newGrid(gTextures['player']['idle'][2], 24, 32),
-            anim8.newGrid(gTextures['player']['idle'][3], 37, 32),
-            anim8.newGrid(gTextures['player']['idle'][4], 37, 32),
+            anim8.newGrid(gTextures['player']['idle'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['idle'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['idle'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['idle'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
         },
         ['jump'] = {
-            anim8.newGrid(gTextures['player']['jump'][1], 26, 32),
-            anim8.newGrid(gTextures['player']['jump'][2], 26, 32),
-            anim8.newGrid(gTextures['player']['jump'][3], 28, 32),
-            anim8.newGrid(gTextures['player']['jump'][4], 28, 32),
+            anim8.newGrid(gTextures['player']['jump'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['jump'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['jump'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['jump'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
         },
         ['walk'] = {
-            anim8.newGrid(gTextures['player']['walk'][1], 25, 32),
-            anim8.newGrid(gTextures['player']['walk'][2], 25, 32),
-            anim8.newGrid(gTextures['player']['walk'][3], 39, 32),
-            anim8.newGrid(gTextures['player']['walk'][4], 39, 32),
+            anim8.newGrid(gTextures['player']['walk'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['walk'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['walk'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['walk'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
         }
     }
 }

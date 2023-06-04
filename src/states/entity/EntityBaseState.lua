@@ -27,8 +27,8 @@ function EntityBaseState:render()
     end
 
     self.entity.currentAnimation:draw(gTextures[self.entity.type][self.name][self.entity.holding + self.entity.direction], 
-        self.entity.x + self.entity.colliderOffsetX, 
-        self.entity.y + self.entity.colliderOffsetY)
+        self.entity.x, 
+        self.entity.y)
 end
 
 function EntityBaseState:assertRightXAndDirection(x)

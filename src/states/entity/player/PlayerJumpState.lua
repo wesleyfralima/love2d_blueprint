@@ -17,19 +17,11 @@ function PlayerJumpState:update(dt)
     if self.entity.isHolding then
         if self.entity.holding == SWORD then
 
-            if self.entity.direction == LEFT then
-                self.entity.colliderOffsetX = -4
-            else
-                self.entity.colliderOffsetX = 0
-            end
-
             if p1_input:pressed('attack') then
                 print('sword slash')
             end
         end
 
-    else
-        self.entity.colliderOffsetX = 0
     end
 
 end
