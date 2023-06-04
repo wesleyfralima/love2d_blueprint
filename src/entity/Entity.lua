@@ -1,6 +1,8 @@
 Entity = Class{}
 
 function Entity:init(def)
+    self.type = def.type
+
     self.animations = self:createAnimations(def.animations)
     self.animationsOnState = {}
 
@@ -13,11 +15,12 @@ function Entity:init(def)
     self.colliderWidthDifference = def.colliderWidthDifference or 0
     self.colliderHeightDifference = def.colliderHeightDifference or 0
 
-
     self.colliderOffsetX = 0
     self.colliderOffsetY = 0
 
     self.direction = def.direction
+
+    self.holding = def.holding or NOTHING
 
     self.dx = def.dx
     self.dy = def.dy
@@ -39,31 +42,48 @@ end
 
 function Entity:changeDirection(x)
     if x < 0 then
-        self.direction = 'left'
+        self.direction = LEFT
     elseif x > 0 then
-        self.direction = 'right'
+        self.direction = RIGHT
     end
 end
 
-function Entity:changeAnimationOnState(name)
-    self.currentAnimation = self.animationsOnState[name]
+function Entity:changeAnimationOnState(index)
+    self.currentAnimation = self.animationsOnState[index]
 end
 
 function Entity:createAnimations(animations)
     local animationsReturned = {}
 
-    for k, animationDef in pairs(animations) do
-        animationsReturned[k] = anim8.newAnimation(
-            gGrids[animationDef.texture](
-                animationDef.framesCol,
-                1 -- row is always one
-            ), 
-            animationDef.interval,
-            animationDef.onloop
-        )
+    for i, animationDef in pairs(animations) do
+        animationsReturned[i] = {}
+        for j, anim in pairs(animationDef) do
+            animationsReturned[i][j] = anim8.newAnimation(
+                gGrids[self.type][i][j](
+                    anim.framesCol,
+                    1 -- row is always one
+                ),
+                anim.interval,
+                anim.onloop
+            )
+        end
     end
-
     return animationsReturned
+end
+
+function Entity:createAnimationsOnState(stateName)
+    local animationsReturned = {}
+
+    for state, anims in pairs(self.animations) do
+        if stateName == state then
+
+            for index, anim in pairs(anims) do
+                animationsReturned[index] = anim
+            end
+
+            return animationsReturned
+        end
+    end
 end
 
 --[[

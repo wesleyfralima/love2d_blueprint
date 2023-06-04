@@ -13,4 +13,9 @@ function PlayerIdleState:update(dt)
         self.entity:changeState('jump')
     end
 
+    if p1_input:pressed('main_action') then
+        self.entity.holding = SWORD
+        --self:enter()
+    end
+
 end

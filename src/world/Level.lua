@@ -14,30 +14,27 @@ function Level:init(player, defs)
     collider:setFriction(0)
 
     self.player = Player {
+        type = 'player',
         animations = ENTITY_DEFS['player'].animations,
         x = 0,
         y = 0,
         width = 24,
         height = 32,
-        direction = 'right',
+        direction = RIGHT,
         dx = 150,
         dy = PLAYER_JUMP_IMPULSE,
         collider = collider,
-        colliderHeightDifference = 5
+        colliderHeightDifference = 5,
+        holding = NOTHING
     }
 
     self.player.jumpMaxHeight = self.player.height * 2
 
     self.player.stateMachine = StateMachine {
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
-
         ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
-        ['sword-idle'] = function() return PlayerSwordIdleState(self.player, 'sword-idle') end,
-
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
-
         ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
-        ['sword-walk'] = function() return PlayerSwordWalkState(self.player, 'sword-walk') end,
     }
 
     self.map = sti('assets/tiled/maps/test_map.lua')    
