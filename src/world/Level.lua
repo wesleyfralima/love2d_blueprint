@@ -7,7 +7,7 @@ function Level:init(player, defs)
     local collider = self.world:newRectangleCollider(
         VIRTUAL_WIDTH / 2 + 3,
         VIRTUAL_HEIGHT / 2,
-        18,
+        12,
         20
     )
 
@@ -104,7 +104,7 @@ function Level:render()
         self.player:render()
 
         -- this draws the colliders
-        self.world:draw()
+        -- self.world:draw()
 
         -- this draws a box containing the player
         -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
