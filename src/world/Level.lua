@@ -30,7 +30,10 @@ function Level:init(player, defs)
 
     self.player.stateMachine = StateMachine {
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
+
         ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
+        ['sword-idle'] = function() return PlayerSwordIdleState(self.player, 'sword-idle') end,
+
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
         ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
     }

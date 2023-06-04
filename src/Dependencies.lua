@@ -40,6 +40,7 @@ require 'src/states/entity/EntityWalkState'
 
 require 'src/states/entity/player/PlayerFallState'
 require 'src/states/entity/player/PlayerIdleState'
+require 'src/states/entity/player/PlayerSwordIdleState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerWalkState'
 
@@ -101,6 +102,9 @@ gTextures = {
     ['player_idle-right'] = love.graphics.newImage('assets/img/player/idle-right.png'),
     ['player_idle-left'] = love.graphics.newImage('assets/img/player/idle-left.png'),
 
+    ['player_sword-idle-right'] = love.graphics.newImage('assets/img/player/sword-idle-right.png'),
+    ['player_sword-idle-left'] = love.graphics.newImage('assets/img/player/sword-idle-left.png'),
+
     ['player_jump-right'] = love.graphics.newImage('assets/img/player/jump-right.png'),
     ['player_jump-left'] = love.graphics.newImage('assets/img/player/jump-left.png'),
 
@@ -114,6 +118,9 @@ gGrids = {
 
     ['player_idle-right'] = anim8.newGrid(gTextures['player_idle-right'], 24, 32),
     ['player_idle-left'] = anim8.newGrid(gTextures['player_idle-left'], 24, 32),
+
+    ['player_sword-idle-right'] = anim8.newGrid(gTextures['player_sword-idle-right'], 37, 32),
+    ['player_sword-idle-left'] = anim8.newGrid(gTextures['player_sword-idle-left'], 37, 32),
 
     ['player_walk-right'] = anim8.newGrid(gTextures['player_walk-right'], 25, 32),
     ['player_walk-left'] = anim8.newGrid(gTextures['player_walk-left'], 25, 32),

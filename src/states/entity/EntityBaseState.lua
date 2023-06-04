@@ -1,6 +1,5 @@
 EntityBaseState = Class{}
 
-function EntityBaseState:exit() end
 function EntityBaseState:processAI(params, dt) end
 function EntityBaseState:update(dt) end
 
@@ -25,6 +24,11 @@ function EntityBaseState:enter()
     self.entity:changeAnimation(self.entity.animationsOnState[self.name .. '-' .. self.entity.direction])
 end
 
+function EntityBaseState:exit() 
+    self.entity.colliderOffsetX = 0
+    self.entity.colliderOffsetX = 0
+end
+
 function EntityBaseState:render()
     
     if self.entity.currentAnimation == nil then
@@ -32,8 +36,8 @@ function EntityBaseState:render()
     end
 
     self.entity.currentAnimation:draw(gTextures['player_' .. self.name .. '-' .. self.entity.direction], 
-        self.entity.x, 
-        self.entity.y)
+        self.entity.x + self.entity.colliderOffsetX, 
+        self.entity.y + self.entity.colliderOffsetY)
 end
 
 function EntityBaseState:assertRightXAndDirection(x)
