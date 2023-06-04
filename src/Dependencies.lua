@@ -75,6 +75,7 @@ p1_input = baton.new {
         main_action     = {'axis:triggerright+', 'mouse:1'},
         side_action     = {'axis:triggerleft+', 'mouse:2'},
         jump            = {'key:space', 'button:a'},
+        attack          = {'button:x'}
     },
     pairs = {
         move = {'left', 'right','up', 'down'},

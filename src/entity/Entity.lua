@@ -21,6 +21,14 @@ function Entity:init(def)
     self.direction = def.direction
 
     self.holding = def.holding or NOTHING
+    
+    if self.holding == NOTHING then
+        self.isHolding = false
+    else
+        self.isHolding = true
+    end
+
+    print(self.isHolding )
 
     self.dx = def.dx
     self.dy = def.dy
