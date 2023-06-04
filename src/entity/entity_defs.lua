@@ -31,6 +31,16 @@ ENTITY_DEFS = {
                 interval = 0.1,
                 texture = 'player_walk-left'
             },
+            ['sword-walk-right'] = {
+                framesCol = '1-6',
+                interval = 0.1,
+                texture = 'player_sword-walk-right'
+            },
+            ['sword-walk-left'] = {
+                framesCol = '1-6',
+                interval = 0.1,
+                texture = 'player_sword-walk-left'
+            },
             ['jump-right'] = {
                 framesCol = '1-3',
                 interval = 0.1,

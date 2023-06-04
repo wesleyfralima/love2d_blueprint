@@ -43,6 +43,7 @@ require 'src/states/entity/player/PlayerIdleState'
 require 'src/states/entity/player/PlayerSwordIdleState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerWalkState'
+require 'src/states/entity/player/PlayerSwordWalkState'
 
 require 'src/states/game/PauseState'
 require 'src/states/game/PlayState'
@@ -110,6 +111,9 @@ gTextures = {
 
     ['player_walk-right'] = love.graphics.newImage('assets/img/player/walk-right.png'),
     ['player_walk-left'] = love.graphics.newImage('assets/img/player/walk-left.png'),
+
+    ['player_sword-walk-right'] = love.graphics.newImage('assets/img/player/sword-walk-right.png'),
+    ['player_sword-walk-left'] = love.graphics.newImage('assets/img/player/sword-walk-left.png'),
 }
 
 gGrids = {
@@ -122,11 +126,14 @@ gGrids = {
     ['player_sword-idle-right'] = anim8.newGrid(gTextures['player_sword-idle-right'], 37, 32),
     ['player_sword-idle-left'] = anim8.newGrid(gTextures['player_sword-idle-left'], 37, 32),
 
+    ['player_jump-right'] = anim8.newGrid(gTextures['player_jump-right'], 26, 32),
+    ['player_jump-left'] = anim8.newGrid(gTextures['player_jump-left'], 26, 32),
+
     ['player_walk-right'] = anim8.newGrid(gTextures['player_walk-right'], 25, 32),
     ['player_walk-left'] = anim8.newGrid(gTextures['player_walk-left'], 25, 32),
 
-    ['player_jump-right'] = anim8.newGrid(gTextures['player_jump-right'], 26, 32),
-    ['player_jump-left'] = anim8.newGrid(gTextures['player_jump-left'], 26, 32),
+    ['player_sword-walk-right'] = anim8.newGrid(gTextures['player_sword-walk-right'], 39, 32),
+    ['player_sword-walk-left'] = anim8.newGrid(gTextures['player_sword-walk-left'], 39, 32),
 }
 
 -- choose color according to game colors and style. Placeholder only

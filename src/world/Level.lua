@@ -35,7 +35,9 @@ function Level:init(player, defs)
         ['sword-idle'] = function() return PlayerSwordIdleState(self.player, 'sword-idle') end,
 
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
+
         ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
+        ['sword-walk'] = function() return PlayerSwordWalkState(self.player, 'sword-walk') end,
     }
 
     self.map = sti('assets/tiled/maps/test_map.lua')    
@@ -59,7 +61,7 @@ function Level:init(player, defs)
         following = self.player
     }
 
-    self.player.stateMachine:change('idle')
+    self.player.stateMachine:change('sword-idle')
 
     local bg1 = BackgroundLayer{
         xSpeed = 60,
@@ -105,10 +107,10 @@ function Level:render()
         self.player:render()
 
         -- this draws the colliders
-        -- self.world:draw()
+        self.world:draw()
 
         -- this draws a box containing the player
-        -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
+        love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
 
     self.camera:stopFilming()
 end

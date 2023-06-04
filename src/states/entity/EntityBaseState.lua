@@ -1,5 +1,6 @@
 EntityBaseState = Class{}
 
+function EntityBaseState:exit() end
 function EntityBaseState:processAI(params, dt) end
 function EntityBaseState:update(dt) end
 
@@ -22,11 +23,6 @@ function EntityBaseState:enter()
     end
     
     self.entity:changeAnimation(self.entity.animationsOnState[self.name .. '-' .. self.entity.direction])
-end
-
-function EntityBaseState:exit() 
-    self.entity.colliderOffsetX = 0
-    self.entity.colliderOffsetX = 0
 end
 
 function EntityBaseState:render()
