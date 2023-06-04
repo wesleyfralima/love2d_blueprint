@@ -80,7 +80,7 @@ end
 
 function Entity:update(dt)
 
-    self.x = self.collider:getX() - self.width/2
+    self.x = self.collider:getX() - self.width/2 - self.colliderWidthDifference
     self.y = self.collider:getY() - self.height/2 - self.colliderHeightDifference
 
     for _, anim in pairs(self.animationsOnState) do

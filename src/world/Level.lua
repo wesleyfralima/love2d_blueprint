@@ -61,7 +61,7 @@ function Level:init(player, defs)
         following = self.player
     }
 
-    self.player.stateMachine:change('sword-idle')
+    self.player.stateMachine:change('idle')
 
     local bg1 = BackgroundLayer{
         xSpeed = 60,
@@ -110,7 +110,7 @@ function Level:render()
         self.world:draw()
 
         -- this draws a box containing the player
-        love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
+        -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
 
     self.camera:stopFilming()
 end
