@@ -31,11 +31,10 @@ function Entity:init(def)
     self.dx = def.dx
     self.dy = def.dy
 
-    self.jumpMaxHeight = def.jumpMaxHeight
-
     -- physics
     self.collider = def.collider
     self.collider:setFixedRotation(true)
+    self.collider:setFriction(0)
 end
 
 function Entity:changeState(name)

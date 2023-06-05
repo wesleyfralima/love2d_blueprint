@@ -1,7 +1,9 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-    self.level = Level()
+    self.level = Level{
+        id = 'test'
+    }
 end
 
 function PlayState:update(dt)
