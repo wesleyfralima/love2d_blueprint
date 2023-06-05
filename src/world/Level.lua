@@ -5,7 +5,7 @@ function Level:init(player, defs)
     self.world = wf.newWorld(0, 1000)
 
     local collider = self.world:newRectangleCollider(
-        VIRTUAL_WIDTH / 2 + 3,
+        VIRTUAL_WIDTH / 2,
         VIRTUAL_HEIGHT / 2,
         12,
         20
@@ -24,13 +24,14 @@ function Level:init(player, defs)
         dx = 150,
         dy = PLAYER_JUMP_IMPULSE,
         collider = collider,
-        colliderHeightDifference = 5,
+        colliderHeightDifference = 6,
         holding = NOTHING
     }
 
     self.player.jumpMaxHeight = self.player.height * 2
 
     self.player.stateMachine = StateMachine {
+        ['attack'] = function() return PlayerSwordAttackState(self.player, 'attack') end,
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
         ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,

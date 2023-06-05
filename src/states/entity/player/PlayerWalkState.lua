@@ -20,7 +20,7 @@ function PlayerWalkState:update(dt)
         if self.entity.holding == SWORD then
 
             if p1_input:pressed('attack') then
-                print('sword slash')
+                self.entity:changeState('attack')
             end
         end
     end

@@ -40,7 +40,7 @@ require 'src/states/entity/EntityWalkState'
 
 require 'src/states/entity/player/PlayerFallState'
 require 'src/states/entity/player/PlayerIdleState'
-require 'src/states/entity/player/PlayerSwordIdleState'
+require 'src/states/entity/player/PlayerSwordAttackState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerWalkState'
 require 'src/states/entity/player/PlayerSwordWalkState'
@@ -99,6 +99,12 @@ gTextures = {
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
 
     ['player'] = {
+        ['attack'] = { 
+            love.graphics.newImage('assets/img/player/sword-attack1-right.png'),
+            love.graphics.newImage('assets/img/player/sword-attack1-left.png'),
+            love.graphics.newImage('assets/img/player/sword-attack1-right.png'),
+            love.graphics.newImage('assets/img/player/sword-attack1-left.png'),
+        },
         ['fall'] = { 
             love.graphics.newImage('assets/img/player/fall-right.png'),
             love.graphics.newImage('assets/img/player/fall-left.png'),
@@ -128,6 +134,12 @@ gTextures = {
 
 gGrids = {
     ['player'] = {
+        ['attack'] = { 
+            anim8.newGrid(gTextures['player']['attack'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['attack'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['attack'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['attack'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+        },
         ['fall'] = { 
             anim8.newGrid(gTextures['player']['fall'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
             anim8.newGrid(gTextures['player']['fall'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
