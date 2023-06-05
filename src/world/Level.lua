@@ -28,8 +28,6 @@ function Level:init(player, defs)
         holding = NOTHING
     }
 
-    self.player.jumpMaxHeight = self.player.height * 2
-
     self.player.stateMachine = StateMachine {
         ['attack'] = function() return PlayerSwordAttackState(self.player, 'attack') end,
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,

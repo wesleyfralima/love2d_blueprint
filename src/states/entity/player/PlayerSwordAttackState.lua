@@ -1,5 +1,17 @@
 PlayerSwordAttackState = Class{__includes = EntityBaseState}
 
+function PlayerSwordAttackState:enter()
+    EntityBaseState.enter(self)
+
+    self.entity.hitbox = self.entity:rangeBox(15)
+end
+
+function PlayerSwordAttackState:exit()
+    EntityBaseState.exit(self)
+
+    self.entity.hitbox = nil
+end
+
 function PlayerSwordAttackState:update(dt)
 
     local x, y = p1_input:get('move')

@@ -92,6 +92,21 @@ function Entity:createAnimationsOnState(stateName)
     end
 end
 
+function Entity:rangeBox(range)
+    local x = self.x + self.width/2
+    local y = self.y + self.height/2 + 6
+    local width = range
+    local height = 4
+
+    if self.direction == RIGHT then
+        x = x + 17
+    else
+        x = x - (17 + range)
+    end
+
+    return Hitbox(x, y, width, height)
+end
+
 --[[
     Called when we interact with this entity, as by pressing
     interact key (defined in Dependencies.lua).

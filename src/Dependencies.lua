@@ -18,6 +18,7 @@ require 'src/Background'
 require 'src/BackgroundLayer'
 require 'src/Camera'
 require 'src/constants'
+require 'src/Hitbox'
 require 'src/StateMachine'
 require 'src/utils'
 
@@ -170,6 +171,7 @@ gGrids = {
 -- choose color according to game colors and style. Placeholder only
 -- from coolors.co ()
 gColors = {
+    ['White'] = {255/255, 255/255, 255/255, 255/255},
     ['ImperialRed'] = {249/255, 65/255, 68/255},
     ['OrangeCrayola'] = {243/255, 114/255, 44/255},
     ['CarrotOrange'] = {248/255, 150/255, 30/255},
