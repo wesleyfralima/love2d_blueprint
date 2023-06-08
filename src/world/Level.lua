@@ -1,18 +1,18 @@
 Level = Class{}
 
 function Level:init(def)
-    self.levelInfo = LEVELS[def.id]
+    local levelInfo = require ('src/world/levels/level_' .. def.id)
 
-    self:createBackground()
+    self:createBackground(levelInfo)
 
     self.world = wf.newWorld(
-        self.levelInfo.gravity.x,
-        self.levelInfo.gravity.y
+        levelInfo.gravity.x,
+        levelInfo.gravity.y
     )
 
-    self:createMap()
+    self:createMap(levelInfo)
 
-    self:createPlayer()
+    self:createPlayer(levelInfo)
 
     self.camera = Camera{
         windowWidth = VIRTUAL_WIDTH,
@@ -45,9 +45,9 @@ function Level:render()
     self.camera:stopFilming()
 end
 
-function Level:createPlayer()
+function Level:createPlayer(levelInfo)
 
-    local pInfo = self.levelInfo['player']
+    local pInfo = levelInfo['player']
 
     local collider = self.world:newRectangleCollider(
         VIRTUAL_WIDTH / 2,
@@ -83,8 +83,8 @@ function Level:createPlayer()
 
 end
 
-function Level:createMap()
-    local mapInfo = self.levelInfo['map']
+function Level:createMap(levelInfo)
+    local mapInfo = levelInfo['map']
 
     self.map = sti(mapInfo)    
 
@@ -102,8 +102,8 @@ function Level:createMap()
     end
 end
 
-function Level:createBackground()
-    local bgInfo = self.levelInfo['backgrounds']
+function Level:createBackground(levelInfo)
+    local bgInfo = levelInfo['backgrounds']
     local layer = nil
     local bgLayers = {}
 
@@ -124,10 +124,10 @@ function Level:createBackground()
     }
 end
 
-function Level:createObjects()
+function Level:createObjects(levelInfo)
 
 end
 
-function Level:createEnemys()
+function Level:createEnemys(levelInfo)
 
 end
