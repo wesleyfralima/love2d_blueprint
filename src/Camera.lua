@@ -64,9 +64,9 @@ function Camera:startFollowing(obj)
 end
 
 --[[
-    Makes the camera to do not follow any object
+    Makes the camera to not follow any object
 ]]
-function Camera:stopFollowing(obj)
+function Camera:stopFollowing()
     self.following = nil
 end
 
