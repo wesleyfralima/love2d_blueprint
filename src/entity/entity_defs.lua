@@ -105,11 +105,11 @@ ENTITY_DEFS = {
         animations = {
             ['idle'] = {
                 {
-                    framesCol = '1-6',
+                    framesCol = '1-8',
                     interval = 0.1,
                 },
                 {
-                    framesCol = '1-6',
+                    framesCol = '1-8',
                     interval = 0.1,
                 },
             },
