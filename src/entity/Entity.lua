@@ -3,20 +3,14 @@ Entity = Class{}
 function Entity:init(def)
     self.type = def.type
 
-    self.animations = self:createAnimations(def.animations)
+    self.animations = self:createAnimations(ENTITY_DEFS[self.type].animations)
     self.animationsOnState = {}
-
-    self.x = def.x
-    self.y = def.y
 
     self.width = def.width
     self.height = def.height
 
     self.colliderWidthDifference = def.colliderWidthDifference or 0
-    self.colliderHeightDifference = def.colliderHeightDifference or 0
-
-    self.colliderOffsetX = 0
-    self.colliderOffsetY = 0
+    self.colliderHeightDifference = def.colliderHeightDifference or 5
 
     self.direction = def.direction
 
@@ -35,26 +29,6 @@ function Entity:init(def)
     self.collider = def.collider
     self.collider:setFixedRotation(true)
     self.collider:setFriction(0)
-end
-
-function Entity:changeState(name)
-    self.stateMachine:change(name)
-end
-
-function Entity:changeAnimation(animation)
-    self.currentAnimation = animation
-end
-
-function Entity:changeDirection(x)
-    if x < 0 then
-        self.direction = LEFT
-    elseif x > 0 then
-        self.direction = RIGHT
-    end
-end
-
-function Entity:changeAnimationOnState(index)
-    self.currentAnimation = self.animationsOnState[index]
 end
 
 function Entity:createAnimations(animations)
@@ -88,6 +62,26 @@ function Entity:createAnimationsOnState(stateName)
 
             return animationsReturned
         end
+    end
+end
+
+function Entity:changeAnimation(animation)
+    self.currentAnimation = animation
+end
+
+function Entity:changeAnimationOnState(index)
+    self.currentAnimation = self.animationsOnState[index]
+end
+
+function Entity:changeState(name)
+    self.stateMachine:change(name)
+end
+
+function Entity:changeDirection(x)
+    if x < 0 then
+        self.direction = LEFT
+    elseif x > 0 then
+        self.direction = RIGHT
     end
 end
 

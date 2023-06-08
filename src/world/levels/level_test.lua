@@ -15,7 +15,6 @@ return {
         direction = RIGHT,
         dx = 150,
         dy = PLAYER_JUMP_IMPULSE,
-        colliderHeightDifference = 5,
         holding = NOTHING,
         state = 'idle'
     },
@@ -58,7 +57,6 @@ return {
             direction = LEFT,
             dx = 150,
             dy = 150,
-            colliderHeightDifference = 5,
             holding = NOTHING,
             state = 'idle'
         },

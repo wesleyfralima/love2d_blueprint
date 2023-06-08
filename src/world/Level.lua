@@ -3,16 +3,13 @@ Level = Class{}
 function Level:init(def)
     local levelInfo = require ('src/world/levels/level_' .. def.id)
 
-    self:createBackground(levelInfo)
+    self:createBackground(levelInfo.backgrounds)
 
-    self.world = wf.newWorld(
-        levelInfo.gravity.x,
-        levelInfo.gravity.y
-    )
+    self:createWorld(levelInfo.gravity)
 
-    self:createMap(levelInfo)
+    self:createMap(levelInfo.map)
 
-    self:createPlayer(levelInfo)
+    self:createPlayer(levelInfo.player)
 
     self.camera = gamera.new(
         0,
@@ -42,47 +39,48 @@ end
 
 function Level:render()
     self.camera:draw(function()
-            self.background:render()
-            self.map:drawLayer(self.map.layers['ground'])
 
-            for i, enemy in pairs(self.enemys) do
-                enemy:render()
-            end
+        self.background:render()
+        self.map:drawLayer(self.map.layers['ground'])
 
-            self.player:render()
+        for i, enemy in pairs(self.enemys) do
+            enemy:render()
+        end
 
-            -- this draws the colliders
-            -- self.world:draw()
+        self.player:render()
 
-            -- this draws a box containing the player
-            -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
+        -- this draws the colliders
+        -- self.world:draw()
+
     end)
 end
 
-function Level:createPlayer(levelInfo)
+function Level:createWorld(info)
+    self.world = wf.newWorld(
+        info.x,
+        info.y
+    )
+end
 
-    local pInfo = levelInfo['player']
-
+function Level:createPlayer(info)
     local collider = self.world:newRectangleCollider(
-        pInfo.x,
-        pInfo.y,
+        info.x,
+        info.y,
         12,
         20
     )
 
     self.player = Player {
-        type = pInfo.type,
-        animations = ENTITY_DEFS[pInfo.type].animations,
-        x = pInfo.x,
-        y = pInfo.y,
-        width = pInfo.width,
-        height = pInfo.height,
-        direction = pInfo.direction,
-        dx = pInfo.dx,
-        dy = pInfo.dy,
+        type = info.type,
+        x = info.x,
+        y = info.y,
+        width = info.width,
+        height = info.height,
+        direction = info.direction,
+        dx = info.dx,
+        dy = info.dy,
         collider = collider,
-        colliderHeightDifference = pInfo.colliderHeightDifference,
-        holding = pInfo.holding
+        holding = info.holding
     }
 
     self.player.stateMachine = StateMachine {
@@ -93,14 +91,12 @@ function Level:createPlayer(levelInfo)
         ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
     }
 
-    self.player.stateMachine:change(pInfo.state)
+    self.player.stateMachine:change(info.state)
 
 end
 
-function Level:createMap(levelInfo)
-    local mapInfo = levelInfo['map']
-
-    self.map = sti(mapInfo)    
+function Level:createMap(info)
+    self.map = sti(info)    
 
     self.walls = {}
 
@@ -116,12 +112,11 @@ function Level:createMap(levelInfo)
     end
 end
 
-function Level:createBackground(levelInfo)
-    local bgInfo = levelInfo['backgrounds']
+function Level:createBackground(info)
     local layer = nil
     local bgLayers = {}
 
-    for i, bg in pairs(bgInfo) do 
+    for i, bg in pairs(info) do 
         layer = BackgroundLayer{
             xSpeed = bg.xSpeed,
             ySpeed = bg.ySpeed,
@@ -138,7 +133,7 @@ function Level:createBackground(levelInfo)
     }
 end
 
-function Level:createObjects(levelInfo)
+function Level:createObjects(info)
 
 end
 
