@@ -32,6 +32,14 @@ function GenerateQuads(atlas, tilewidth, tileheight)
     return spritesheet
 end
 
+function round(x)
+    if x >= 0 then
+        return math.floor(x + 0.5)
+    else
+        return math.ceil(x - 0.5)
+    end
+end
+
 --[[
     Recursive table printing function.
     https://coronalabs.com/blog/2014/09/02/tutorial-printing-table-contents/

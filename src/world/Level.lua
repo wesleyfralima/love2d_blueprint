@@ -14,11 +14,14 @@ function Level:init(def)
 
     self:createPlayer(levelInfo)
 
-    self.camera = Camera{
-        windowWidth = VIRTUAL_WIDTH,
-        windowHeight = VIRTUAL_HEIGHT,
-        following = self.player
-    }
+    self.camera = gamera.new(
+        0,
+        0,
+        10000,
+        10000
+    )
+
+    self.camera:setWindow(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
 
     self.enemys = {}
     self:createEnemys(levelInfo.enemys)
@@ -33,29 +36,27 @@ function Level:update(dt)
         enemy:update(dt)
     end
 
-    self.camera:update(dt)
+    self.camera:setPosition(self.player.x, self.player.y)
     self.background:update(dt, self.player.x, self.player.y)
 end
 
 function Level:render()
-    self.camera:startFilming()
+    self.camera:draw(function()
+            self.background:render()
+            self.map:drawLayer(self.map.layers['ground'])
 
-        self.background:render()
-        self.map:drawLayer(self.map.layers['ground'])
+            for i, enemy in pairs(self.enemys) do
+                enemy:render()
+            end
 
-        for i, enemy in pairs(self.enemys) do
-            enemy:render()
-        end
+            self.player:render()
 
-        self.player:render()
+            -- this draws the colliders
+            -- self.world:draw()
 
-        -- this draws the colliders
-        -- self.world:draw()
-
-        -- this draws a box containing the player
-        -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
-
-    self.camera:stopFilming()
+            -- this draws a box containing the player
+            -- love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
+    end)
 end
 
 function Level:createPlayer(levelInfo)
