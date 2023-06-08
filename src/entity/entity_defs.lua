@@ -101,4 +101,18 @@ ENTITY_DEFS = {
             },
         }
     },
+    ['pinkyStar'] = {
+        animations = {
+            ['idle'] = {
+                {
+                    framesCol = '1-6',
+                    interval = 0.1,
+                },
+                {
+                    framesCol = '1-6',
+                    interval = 0.1,
+                },
+            },
+        }
+    }
 }

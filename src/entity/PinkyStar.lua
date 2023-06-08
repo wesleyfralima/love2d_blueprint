@@ -1,0 +1,1 @@
+PinkyStar = Class{__includes = Entity}

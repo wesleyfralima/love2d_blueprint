@@ -20,11 +20,19 @@ function Level:init(def)
         following = self.player
     }
 
+    self.enemys = {}
+    self:createEnemys(levelInfo.enemys)
+
 end
 
 function Level:update(dt)
     self.world:update(dt)
     self.player:update(dt)
+
+    for i, enemy in pairs(self.enemys) do
+        enemy:update(dt)
+    end
+
     self.camera:update(dt)
     self.background:update(dt, self.player.x, self.player.y)
 end
@@ -34,6 +42,11 @@ function Level:render()
 
         self.background:render()
         self.map:drawLayer(self.map.layers['ground'])
+
+        for i, enemy in pairs(self.enemys) do
+            enemy:render()
+        end
+
         self.player:render()
 
         -- this draws the colliders
@@ -50,8 +63,8 @@ function Level:createPlayer(levelInfo)
     local pInfo = levelInfo['player']
 
     local collider = self.world:newRectangleCollider(
-        VIRTUAL_WIDTH / 2,
-        VIRTUAL_HEIGHT / 2,
+        pInfo.x,
+        pInfo.y,
         12,
         20
     )
@@ -128,6 +141,36 @@ function Level:createObjects(levelInfo)
 
 end
 
-function Level:createEnemys(levelInfo)
+function Level:createEnemys(info)
+    for i, enemy in pairs(info) do
 
+        local collider = self.world:newRectangleCollider(
+            enemy.x,
+            enemy.y,
+            12,
+            20
+        )
+
+        local e = PinkyStar{
+            type = enemy.type,
+            animations = ENTITY_DEFS[enemy.type].animations,
+            x = enemy.x,
+            y = enemy.y,
+            width = enemy.width,
+            height = enemy.height,
+            direction = enemy.direction,
+            dx = enemy.dx,
+            dy = enemy.dy,
+            collider = collider,
+            colliderHeightDifference = enemy.colliderHeightDifference,
+        }
+
+        e.stateMachine = StateMachine {
+            ['idle'] = function() return EntityIdleState(e, 'idle') end,
+        }
+    
+        e.stateMachine:change(enemy.state)
+
+        table.insert(self.enemys, e)
+    end
 end

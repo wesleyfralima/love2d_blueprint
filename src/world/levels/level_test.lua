@@ -8,8 +8,8 @@ return {
 
     ['player'] = {
         type = 'player',
-        x = 0,
-        y = 0,
+        x = 200,
+        y = 479,
         width = PLAYER_IMAGE_SIZE,
         height = PLAYER_IMAGE_SIZE,
         direction = RIGHT,
@@ -49,6 +49,18 @@ return {
     },
 
     ['enemys'] = {
-
+        {
+            type = 'pinkyStar',
+            x = 250,
+            y = 479,
+            width = PLAYER_IMAGE_SIZE,
+            height = PLAYER_IMAGE_SIZE,
+            direction = LEFT,
+            dx = 150,
+            dy = 150,
+            colliderHeightDifference = 6,
+            holding = NOTHING,
+            state = 'idle'
+        },
     },
 }

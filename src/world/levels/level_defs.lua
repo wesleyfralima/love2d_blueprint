@@ -50,7 +50,19 @@ LEVELS = {
         },
 
         ['enemys'] = {
-
+            {
+                type = 'pinkyStar',
+                x = 250,
+                y = 479,
+                width = PLAYER_IMAGE_SIZE,
+                height = PLAYER_IMAGE_SIZE,
+                direction = LEF,
+                dx = 50,
+                dy = 150,
+                colliderHeightDifference = 6,
+                holding = NOTHING,
+                state = 'idle'
+            },
         },
     }
 }

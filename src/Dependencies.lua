@@ -24,6 +24,7 @@ require 'src/utils'
 
 require 'src/entity/entity_defs'
 require 'src/entity/Entity'
+require 'src/entity/PinkyStar'
 require 'src/entity/Player'
 
 require 'src/gui/Menu'
@@ -44,7 +45,6 @@ require 'src/states/entity/player/PlayerIdleState'
 require 'src/states/entity/player/PlayerSwordAttackState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerWalkState'
-require 'src/states/entity/player/PlayerSwordWalkState'
 
 require 'src/states/game/PauseState'
 require 'src/states/game/PlayState'
@@ -99,6 +99,13 @@ gTextures = {
 
     ['cursor'] = love.graphics.newImage('assets/img/cursor.png'),
 
+    ['pinkyStar'] = {
+        ['idle'] = {
+            love.graphics.newImage('assets/img/pinkyStar/idle-right.png'),
+            love.graphics.newImage('assets/img/pinkyStar/idle-left.png'),
+        },
+    },
+
     ['player'] = {
         ['attack'] = { 
             love.graphics.newImage('assets/img/player/sword-attack1-right.png'),
@@ -134,6 +141,13 @@ gTextures = {
 }
 
 gGrids = {
+    ['pinkyStar'] = {
+        ['idle'] = {
+            anim8.newGrid(gTextures['pinkyStar']['idle'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['pinkyStar']['idle'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+        },
+    },
+
     ['player'] = {
         ['attack'] = { 
             anim8.newGrid(gTextures['player']['attack'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
