@@ -22,9 +22,10 @@ end
 
 function EntityBaseState:render()
     
-    if self.entity.currentAnimation == nil then
-        self.entity:changeAnimationOnState(self.entity.direction + self.entity.holding)
-    end
+    --this can probably be deleted
+    -- if self.entity.currentAnimation == nil then
+    --     self.entity:changeAnimationOnState(self.entity.direction + self.entity.holding)
+    -- end
 
     self.entity.currentAnimation:draw(gTextures[self.entity.type][self.name][self.entity.holding + self.entity.direction], 
         self.entity.x, 
