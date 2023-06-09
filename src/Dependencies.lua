@@ -17,7 +17,6 @@ wf = require 'assets/lib/windfield'
 --
 require 'src/Background'
 require 'src/BackgroundLayer'
-require 'src/Camera'
 require 'src/constants'
 require 'src/Hitbox'
 require 'src/StateMachine'

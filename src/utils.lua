@@ -33,6 +33,8 @@ function GenerateQuads(atlas, tilewidth, tileheight)
 end
 
 function round(x)
+    if x == nil then return 0 end
+    
     if x >= 0 then
         return math.floor(x + 0.5)
     else
