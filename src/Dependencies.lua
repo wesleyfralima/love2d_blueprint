@@ -38,10 +38,11 @@ require 'src/states/BaseState'
 require 'src/states/StateStack'
 
 require 'src/states/entity/EntityBaseState'
-require 'src/states/entity/EntityFallState'
-require 'src/states/entity/EntityIdleState'
-require 'src/states/entity/EntityJumpState'
-require 'src/states/entity/EntityWalkState'
+
+require 'src/states/entity/enemys/pinky_star/PinkyStarFallState'
+require 'src/states/entity/enemys/pinky_star/PinkyStarIdleState'
+require 'src/states/entity/enemys/pinky_star/PinkyStarJumpState'
+require 'src/states/entity/enemys/pinky_star/PinkyStarWalkState'
 
 require 'src/states/entity/player/PlayerFallState'
 require 'src/states/entity/player/PlayerIdleState'

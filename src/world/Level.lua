@@ -171,7 +171,7 @@ function Level:createEnemys(info)
         }
 
         e.stateMachine = StateMachine {
-            ['idle'] = function() return EntityIdleState(e, 'idle') end,
+            ['idle'] = function() return EntityBaseState(e, 'idle') end,
         }
     
         e.stateMachine:change(enemy.state)
