@@ -60,6 +60,12 @@ function Level:createWorld(info)
         info.x,
         info.y
     )
+
+    self.world:addCollisionClass('Solid')
+    self.world:addCollisionClass('Ground')
+
+    self.world:addCollisionClass('Player')
+    self.world:addCollisionClass('Enemy', {ignores = {'Player'}})
 end
 
 function Level:createPlayer(info)
@@ -69,6 +75,7 @@ function Level:createPlayer(info)
         12,
         20
     )
+    collider:setCollisionClass('Player')
 
     self.player = Player {
         type = info.type,
@@ -108,6 +115,7 @@ function Level:createMap(info)
             obj.height
         )
         wall:setType('static')
+        wall:setCollisionClass('Ground')
         table.insert(self.walls, wall)
     end
 end
@@ -146,6 +154,7 @@ function Level:createEnemys(info)
             12,
             20
         )
+        collider:setCollisionClass('Enemy')
 
         local e = PinkyStar{
             type = enemy.type,
