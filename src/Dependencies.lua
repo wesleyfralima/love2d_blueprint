@@ -25,8 +25,10 @@ require 'src/utils'
 
 require 'src/entity/entity_defs'
 require 'src/entity/Entity'
-require 'src/entity/PinkyStar'
-require 'src/entity/Player'
+
+require 'src/entity/enemys/PinkyStar'
+
+require 'src/entity/player/Player'
 
 require 'src/gui/Menu'
 require 'src/gui/Panel'
