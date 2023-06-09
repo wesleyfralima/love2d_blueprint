@@ -33,7 +33,11 @@ function Level:update(dt)
         enemy:update(dt)
     end
 
-    self.camera:setPosition(self.player.x, self.player.y)
+    self.camera:setPosition(
+        self.player.x + self.player.width/2,
+        self.player.y + self.player.height/5
+    )
+
     self.background:update(dt, self.player.x, self.player.y)
 end
 

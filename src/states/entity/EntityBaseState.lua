@@ -28,8 +28,8 @@ function EntityBaseState:render()
     -- end
 
     self.entity.currentAnimation:draw(gTextures[self.entity.type][self.name][self.entity.holding + self.entity.direction], 
-        self.entity.x, 
-        self.entity.y)
+        round(self.entity.x), 
+        round(self.entity.y))
 end
 
 function EntityBaseState:assertRightXAndDirection(x)

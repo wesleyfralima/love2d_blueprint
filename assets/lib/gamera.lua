@@ -109,7 +109,7 @@ function gamera:setPosition(x,y)
   checkNumber(x, "x")
   checkNumber(y, "y")
 
-  self.x, self.y = x,y
+  self.x, self.y = round(x),round(y)
 
   adjustPosition(self)
 end

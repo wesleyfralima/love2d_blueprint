@@ -34,9 +34,9 @@ function BackgroundLayer:update(dt)
 end
 
 function BackgroundLayer:render()
-    love.graphics.draw(gTextures[self.image], self.x - self.width - self.offsetX, self.offsetY)
-    love.graphics.draw(gTextures[self.image], self.x              - self.offsetX, self.offsetY)
-    love.graphics.draw(gTextures[self.image], self.x + self.width - self.offsetX, self.offsetY)
+    love.graphics.draw(gTextures[self.image], round(self.x - self.width - self.offsetX), self.offsetY)
+    love.graphics.draw(gTextures[self.image], round(self.x              - self.offsetX), self.offsetY)
+    love.graphics.draw(gTextures[self.image], round(self.x + self.width - self.offsetX), self.offsetY)
 end
 
 function BackgroundLayer:setPosition(x, y)

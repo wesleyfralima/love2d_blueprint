@@ -114,8 +114,8 @@ end
 
 function Entity:update(dt)
 
-    self.x = round(self.collider:getX() - self.width/2 - self.colliderWidthDifference)
-    self.y = round(self.collider:getY() - self.height/2 - self.colliderHeightDifference)
+    self.x = self.collider:getX() - self.width/2 - self.colliderWidthDifference
+    self.y = self.collider:getY() - self.height/2 - self.colliderHeightDifference
 
     for _, anim in pairs(self.animationsOnState) do
         anim:update(dt)
