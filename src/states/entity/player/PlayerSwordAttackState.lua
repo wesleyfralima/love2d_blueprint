@@ -1,28 +1,26 @@
-PlayerSwordAttackState = Class{__includes = EntityBaseState}
+PlayerSwordAttackState = Class{__includes = PlayerBaseState}
 
 function PlayerSwordAttackState:enter()
-    EntityBaseState.enter(self)
+    PlayerBaseState.enter(self)
 
+    -- This hitbox will damage foes and objects
     self.entity.hitbox = self.entity:rangeBox(15)
 end
 
 function PlayerSwordAttackState:exit()
-    EntityBaseState.exit(self)
+    PlayerBaseState.exit(self)
 
+    -- Hitbox must be destroyed when attack is done
     self.entity.hitbox = nil
 end
 
 function PlayerSwordAttackState:update(dt)
+    PlayerBaseState.update(self, dt)
 
-    local x, y = p1_input:get('move')
-
+    -- If player presses attack button again,
+    -- a combo will be performed
     if p1_input:pressed('attack') then
         print('second sword')
-    end
-
-    if p1_input:pressed('jump') then
-        self.entity.collider:applyLinearImpulse( 0, self.entity.dy )
-        self.entity:changeState('jump')
     end
 
     -- if we've fully elapsed through one cycle of animation,
@@ -31,8 +29,5 @@ function PlayerSwordAttackState:update(dt)
     if self.entity.currentAnimation.status == 'paused' then
         self.entity:changeState('idle')
     end
-
-    self.entity:processXMovement(x)
-    self:assertRightXAndDirection(x)
     
 end

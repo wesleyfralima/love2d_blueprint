@@ -29,6 +29,8 @@ function Entity:init(def)
     self.collider = def.collider
     self.collider:setFixedRotation(true)
     self.collider:setFriction(0)
+
+    self.isOnGround = nil
 end
 
 function Entity:createAnimations(animations)

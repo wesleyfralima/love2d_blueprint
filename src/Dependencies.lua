@@ -37,6 +37,7 @@ require 'src/states/BaseState'
 require 'src/states/StateStack'
 
 require 'src/states/entity/EntityBaseState'
+require 'src/states/entity/PlayerBaseState'
 
 require 'src/states/entity/enemys/pinky_star/PinkyStarFallState'
 require 'src/states/entity/enemys/pinky_star/PinkyStarIdleState'
