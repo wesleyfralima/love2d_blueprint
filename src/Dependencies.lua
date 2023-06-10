@@ -123,6 +123,12 @@ gTextures = {
             love.graphics.newImage('assets/img/player/sword-fall-right.png'),
             love.graphics.newImage('assets/img/player/sword-fall-left.png')
         },
+        ['ground'] = { 
+            love.graphics.newImage('assets/img/player/ground-right.png'),
+            love.graphics.newImage('assets/img/player/ground-left.png'),
+            love.graphics.newImage('assets/img/player/sword-ground-right.png'),
+            love.graphics.newImage('assets/img/player/sword-ground-left.png')
+        },
         ['idle'] = {
             love.graphics.newImage('assets/img/player/idle-right.png'),
             love.graphics.newImage('assets/img/player/idle-left.png'),
@@ -164,6 +170,12 @@ gGrids = {
             anim8.newGrid(gTextures['player']['fall'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
             anim8.newGrid(gTextures['player']['fall'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
             anim8.newGrid(gTextures['player']['fall'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+        },
+        ['ground'] = { 
+            anim8.newGrid(gTextures['player']['ground'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['ground'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['ground'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['ground'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
         },
         ['idle'] = {
             anim8.newGrid(gTextures['player']['idle'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),

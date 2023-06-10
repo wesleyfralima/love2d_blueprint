@@ -41,6 +41,28 @@ ENTITY_DEFS = {
                     interval = 0.1,
                 },
             },
+            ['ground'] = {
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+            },
             ['idle'] = {
                 {
                     framesCol = '1-5',
