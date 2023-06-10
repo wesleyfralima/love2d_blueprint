@@ -1,7 +1,7 @@
 Level = Class{}
 
 function Level:init(def)
-    local levelInfo = require ('src/world/levels/level_' .. def.id)
+    local levelInfo = require (LEVELS[def.id])
 
     self:createBackground(levelInfo.backgrounds)
 

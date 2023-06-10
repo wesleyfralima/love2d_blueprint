@@ -1,3 +1,3 @@
 LEVELS = {
-    ['test'] = 'assets/tiled/maps/test_map.lua',
+    ['test'] = 'src/world/levels/level_test',
 }
