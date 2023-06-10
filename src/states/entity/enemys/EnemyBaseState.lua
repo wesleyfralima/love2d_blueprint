@@ -1,0 +1,1 @@
+EnemyBaseState = Class{__includes = EntityBaseState}

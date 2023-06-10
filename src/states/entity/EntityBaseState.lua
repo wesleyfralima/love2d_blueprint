@@ -21,15 +21,10 @@ function EntityBaseState:enter()
 end
 
 function EntityBaseState:render()
-    
-    --this can probably be deleted
-    -- if self.entity.currentAnimation == nil then
-    --     self.entity:changeAnimationOnState(self.entity.direction + self.entity.holding)
-    -- end
-
     self.entity.currentAnimation:draw(gTextures[self.entity.type][self.name][self.entity.holding + self.entity.direction], 
         round(self.entity.x), 
-        round(self.entity.y))
+        round(self.entity.y)
+    )
 end
 
 function EntityBaseState:assertRightXAndDirection(x)

@@ -30,6 +30,7 @@ function Level:update(dt)
     self.player:update(dt)
 
     for i, enemy in pairs(self.enemys) do
+        enemy:processAI({}, dt)
         enemy:update(dt)
     end
 
