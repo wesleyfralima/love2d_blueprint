@@ -25,8 +25,9 @@ function PlayerFallState:update(dt)
         end
 
     -- If the player is falling too fast, cap his downwards velocity
+    -- and maintain his sideways velocity
     elseif self.vy > PLAYER_MAX_FALL_SPEED then
-        self.entity.collider:setLinearVelocity(0, PLAYER_MAX_FALL_SPEED)
+        self.entity.collider:setLinearVelocity(self.vx, PLAYER_MAX_FALL_SPEED)
     end
     
 end
