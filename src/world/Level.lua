@@ -99,6 +99,7 @@ function Level:createPlayer(info)
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
         ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
+        ['land'] = function() return PlayerLandState(self.player, 'land') end,
         ['walk'] = function() return PlayerWalkState(self.player, 'walk') end,
     }
 

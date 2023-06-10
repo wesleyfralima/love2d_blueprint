@@ -6,10 +6,12 @@ function PlayerFallState:enter()
 end
 
 function PlayerFallState:update(dt)
-    local _, vy = self.entity.collider:getLinearVelocity()
+    local vx, vy = self.entity.collider:getLinearVelocity()
 
-    if vy == 0 then
+    if vy == 0 and vx ~= 0 then
         self.entity:changeState('idle')
+    elseif vy == 0 then
+        self.entity:changeState('land')
     elseif vy > PLAYER_MAX_FALL_SPEED then
         self.entity.collider:setLinearVelocity(0, PLAYER_MAX_FALL_SPEED)
     end

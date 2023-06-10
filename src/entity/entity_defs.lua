@@ -41,28 +41,6 @@ ENTITY_DEFS = {
                     interval = 0.1,
                 },
             },
-            ['ground'] = {
-                {
-                    framesCol = '1-2',
-                    interval = 0.1,
-                    onloop = 'pauseAtEnd'
-                },
-                {
-                    framesCol = '1-2',
-                    interval = 0.1,
-                    onloop = 'pauseAtEnd'
-                },
-                {
-                    framesCol = '1-2',
-                    interval = 0.1,
-                    onloop = 'pauseAtEnd'
-                },
-                {
-                    framesCol = '1-2',
-                    interval = 0.1,
-                    onloop = 'pauseAtEnd'
-                },
-            },
             ['idle'] = {
                 {
                     framesCol = '1-5',
@@ -99,6 +77,28 @@ ENTITY_DEFS = {
                 },
                 {
                     framesCol = '1-3',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+            },
+            ['land'] = {
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-2',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-2',
                     interval = 0.1,
                     onloop = 'pauseAtEnd'
                 },
