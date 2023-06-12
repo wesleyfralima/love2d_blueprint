@@ -53,14 +53,14 @@ function Entity:createAnimations(animations)
 
     for i, animationDef in pairs(animations) do
         animationsReturned[i] = {}
-        for j, anim in pairs(animationDef) do
+        for j = 1, 4 do
             animationsReturned[i][j] = anim8.newAnimation(
-                gGrids[self.type][i][j](
-                    anim.framesCol,
+                gGrids[self.type][i](
+                    animationDef.framesCol,
                     1 -- row is always one
                 ),
-                anim.interval,
-                anim.onloop
+                animationDef.interval,
+                animationDef.onloop
             )
         end
     end
