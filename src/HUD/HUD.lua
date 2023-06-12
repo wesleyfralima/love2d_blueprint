@@ -7,7 +7,7 @@ function HUD:init(player)
         ['health'] = Bar {
             image = gTextures['HUD']['heart'],
             x = 10,
-            y = 30,
+            y = 10,
             fillColor = gColors['ImperialRed'],
             player = self.player,
         },

@@ -69,7 +69,7 @@ function love.draw()
         gStateStack:render()
 
         -- draw FPS
-        love.graphics.draw(formatFPS(), 10, 10)
+        -- love.graphics.draw(formatFPS(), 10, 10)
 
     push:finish()
 end
