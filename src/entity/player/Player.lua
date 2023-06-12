@@ -12,3 +12,16 @@ function Player:processXMovement(inputX)
 
     self.collider:setLinearVelocity(vx, vy)
 end
+
+function Player:rangeBox(range)
+    local x, y = self.collider:getPosition()
+    local height = 4
+
+    if self.direction == RIGHT then
+        x = x + 17
+    else
+        x = x - (17 + range)
+    end
+
+    return Hitbox(x, y, range, height)
+end

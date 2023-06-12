@@ -16,6 +16,11 @@ function Hitbox:collided(target)
     )
 end
 
+function Hitbox:setPosition(x, y)
+    self.x = x
+    self.y = y
+end
+
 function Hitbox:render()
     love.graphics.setColor(gColors['ImperialRed'])
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)

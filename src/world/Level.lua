@@ -29,14 +29,40 @@ function Level:update(dt)
     self.world:update(dt)
     self.player:update(dt)
 
-    for i, enemy in pairs(self.enemys) do
+    for i = #self.enemys, 1, -1 do
+        local enemy = self.enemys[i]
+
+        -- remove entity from the table if health is <= 0
+        if enemy.health <= 0 then
+            enemy.dead = true
+            enemy.onDeath()
+            -- collider must always be removed
+            enemy.collider:destroy()
+            table.remove(self.enemys, i)
+
+            -- If enemy is dead, no need to go further
+            return
+        end
+
         enemy:processAI({}, dt)
         enemy:update(dt)
+
+        -- collision between the player and entities in the room
+        if enemy.hurtBox:collided(self.player.hurtBox) and not self.player.invulnerable then
+            --gSounds['hit-player']:play()
+            self.player:damage(1)
+            self.player:goInvulnerable(1.5)
+
+            if self.player.health == 0 then
+                -- self.player.collider:destroy()
+                -- print('Player is dead')
+            end
+        end
     end
 
     self.camera:setPosition(
-        self.player.x + self.player.width/2,
-        self.player.y + self.player.height/5
+        self.player.x + PLAYER_IMAGE_SIZE/2,
+        self.player.y + PLAYER_IMAGE_SIZE/5
     )
 
     self.background:update(dt, self.player.x, self.player.y)
@@ -77,8 +103,8 @@ function Level:createPlayer(info)
     local collider = self.world:newRectangleCollider(
         info.x,
         info.y,
-        12,
-        20
+        info.width,
+        info.height
     )
     collider:setCollisionClass('Player')
 
@@ -92,11 +118,11 @@ function Level:createPlayer(info)
         dx = info.dx,
         dy = info.dy,
         collider = collider,
-        holding = info.holding
+        holding = info.holding,
     }
 
     self.player.stateMachine = StateMachine {
-        ['attack'] = function() return PlayerSwordAttackState(self.player, 'attack') end,
+        ['attack'] = function() return PlayerSwordAttackState(self.player, 'attack', self.enemys) end,
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
         ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
@@ -157,8 +183,8 @@ function Level:createEnemys(info)
         local collider = self.world:newRectangleCollider(
             enemy.x,
             enemy.y,
-            12,
-            20
+            enemy.width,
+            enemy.height
         )
         collider:setCollisionClass('Enemy')
 
@@ -173,7 +199,6 @@ function Level:createEnemys(info)
             dx = enemy.dx,
             dy = enemy.dy,
             collider = collider,
-            colliderHeightDifference = enemy.colliderHeightDifference,
         }
 
         e.stateMachine = StateMachine {

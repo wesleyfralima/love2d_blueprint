@@ -9,8 +9,7 @@ function Entity:init(def)
     self.width = def.width
     self.height = def.height
 
-    self.colliderWidthDifference = def.colliderWidthDifference or 0
-    self.colliderHeightDifference = def.colliderHeightDifference or 5
+    self.health = def.health or 5
 
     self.direction = def.direction
 
@@ -31,6 +30,20 @@ function Entity:init(def)
     self.collider:setFriction(0)
 
     self.isOnGround = nil
+
+    self.hurtBox = Hitbox(0, 0, self.width, self.height)
+
+    -- flags for flashing the entity when hit
+    self.invulnerable = false
+    self.invulnerableDuration = 0
+    self.invulnerableTimer = 0
+
+    -- timer for turning transparency on and off, flashing
+    self.flashTimer = 0
+
+    self.dead = false
+
+    self.onDeath = def.onDeath or function() end
 end
 
 function Entity:createAnimations(animations)
@@ -87,19 +100,17 @@ function Entity:changeDirection(x)
     end
 end
 
-function Entity:rangeBox(range)
-    local x = self.x + self.width/2
-    local y = self.y + self.height/2 + 6
-    local width = range
-    local height = 4
+function Entity:heal(dmg)
+    self.health = math.min(self.health + dmg, self.maxHealth)
+end
 
-    if self.direction == RIGHT then
-        x = x + 17
-    else
-        x = x - (17 + range)
-    end
+function Entity:damage(dmg)
+    self.health = self.health - dmg
+end
 
-    return Hitbox(x, y, width, height)
+function Entity:goInvulnerable(duration)
+    self.invulnerable = true
+    self.invulnerableDuration = duration
 end
 
 --[[
@@ -115,9 +126,24 @@ function Entity:processAI(params, dt)
 end
 
 function Entity:update(dt)
+    local x, y = self.collider:getPosition()
 
-    self.x = self.collider:getX() - self.width/2 - self.colliderWidthDifference
-    self.y = self.collider:getY() - self.height/2 - self.colliderHeightDifference
+    self.x = x - PLAYER_IMAGE_SIZE/2
+    self.y = y - 2*PLAYER_IMAGE_SIZE/3 + self.height/2
+
+    self.hurtBox:setPosition(x - self.width/2, y - self.height/2)
+
+    if self.invulnerable then
+        self.flashTimer = self.flashTimer + dt
+        self.invulnerableTimer = self.invulnerableTimer + dt
+
+        if self.invulnerableTimer > self.invulnerableDuration then
+            self.invulnerable = false
+            self.invulnerableTimer = 0
+            self.invulnerableDuration = 0
+            self.flashTimer = 0
+        end
+    end
 
     for _, anim in pairs(self.animationsOnState) do
         anim:update(dt)
@@ -127,5 +153,13 @@ function Entity:update(dt)
 end
 
 function Entity:render()
+    
+    -- draw sprite slightly transparent if invulnerable every 0.04 seconds
+    if self.invulnerable and self.flashTimer > 0.06 then
+        self.flashTimer = 0
+        love.graphics.setColor(1, 1, 1, 64/255)
+    end
+
     self.stateMachine:render()
+    love.graphics.setColor(1, 1, 1, 1)
 end
