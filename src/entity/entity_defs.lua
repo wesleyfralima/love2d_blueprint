@@ -41,6 +41,28 @@ ENTITY_DEFS = {
                     interval = 0.1,
                 },
             },
+            ['hurt'] = {
+                {
+                    framesCol = '1-4',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-4',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-4',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+                {
+                    framesCol = '1-4',
+                    interval = 0.1,
+                    onloop = 'pauseAtEnd'
+                },
+            },
             ['idle'] = {
                 {
                     framesCol = '1-5',

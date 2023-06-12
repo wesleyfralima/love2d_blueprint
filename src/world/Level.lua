@@ -49,13 +49,14 @@ function Level:update(dt)
 
         -- collision between the player and entities in the room
         if enemy.hurtBox:collided(self.player.hurtBox) and not self.player.invulnerable then
+            self.player:changeState('hurt')
             --gSounds['hit-player']:play()
             self.player:damage(1)
             self.player:goInvulnerable(1.5)
 
-            if self.player.health == 0 then
+            if self.player.health <= 0 then
                 -- self.player.collider:destroy()
-                -- print('Player is dead')
+                print('Player is dead')
             end
         end
     end
@@ -124,6 +125,7 @@ function Level:createPlayer(info)
     self.player.stateMachine = StateMachine {
         ['attack'] = function() return PlayerSwordAttackState(self.player, 'attack', self.enemys) end,
         ['fall'] = function() return PlayerFallState(self.player, 'fall') end,
+        ['hurt'] = function() return PlayerHurtState(self.player, 'hurt') end,
         ['idle'] = function() return PlayerIdleState(self.player, 'idle') end,
         ['jump'] = function() return PlayerJumpState(self.player, 'jump') end,
         ['land'] = function() return PlayerLandState(self.player, 'land') end,

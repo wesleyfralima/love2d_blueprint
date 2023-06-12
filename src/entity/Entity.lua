@@ -44,6 +44,8 @@ function Entity:init(def)
     self.dead = false
 
     self.onDeath = def.onDeath or function() end
+
+    self.isHurting = false
 end
 
 function Entity:createAnimations(animations)

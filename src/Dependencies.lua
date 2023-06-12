@@ -48,10 +48,11 @@ require 'src/states/entity/enemys/pinky_star/PinkyStarJumpState'
 require 'src/states/entity/enemys/pinky_star/PinkyStarWalkState'
 
 require 'src/states/entity/player/PlayerFallState'
+require 'src/states/entity/player/PlayerHurtState'
 require 'src/states/entity/player/PlayerIdleState'
-require 'src/states/entity/player/PlayerSwordAttackState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerLandState'
+require 'src/states/entity/player/PlayerSwordAttackState'
 require 'src/states/entity/player/PlayerWalkState'
 
 require 'src/states/game/PauseState'
@@ -128,6 +129,12 @@ gTextures = {
             love.graphics.newImage('assets/img/player/sword-fall-right.png'),
             love.graphics.newImage('assets/img/player/sword-fall-left.png')
         },
+        ['hurt'] = { 
+            love.graphics.newImage('assets/img/player/hurt-right.png'),
+            love.graphics.newImage('assets/img/player/hurt-left.png'),
+            love.graphics.newImage('assets/img/player/sword-hurt-right.png'),
+            love.graphics.newImage('assets/img/player/sword-hurt-left.png')
+        },
         ['idle'] = {
             love.graphics.newImage('assets/img/player/idle-right.png'),
             love.graphics.newImage('assets/img/player/idle-left.png'),
@@ -175,6 +182,12 @@ gGrids = {
             anim8.newGrid(gTextures['player']['fall'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
             anim8.newGrid(gTextures['player']['fall'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
             anim8.newGrid(gTextures['player']['fall'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+        },
+        ['hurt'] = { 
+            anim8.newGrid(gTextures['player']['hurt'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['hurt'][2], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['hurt'][3], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
+            anim8.newGrid(gTextures['player']['hurt'][4], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),
         },
         ['idle'] = {
             anim8.newGrid(gTextures['player']['idle'][1], PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE),

@@ -1,11 +1,6 @@
 PlayerBaseState = Class{__includes = EntityBaseState}
 
 function PlayerBaseState:update(dt)
-    -- Handle movement and right direction
-    self.inputX, self.inputY = p1_input:get('move')
-    self.entity:processXMovement(self.inputX)
-    self:assertRightXAndDirection(self.inputX)
-
     -- Gets the current velocity from the player
     self.vx, self.vy = self.entity.collider:getLinearVelocity()
 
@@ -22,22 +17,31 @@ function PlayerBaseState:update(dt)
         self.entity:changeState('fall')
     end
 
-    -- If jump was pressed and player is on ground, perform a jump
-    if p1_input:pressed('jump') then
-        if self.entity.isOnGround then
-            self.entity.collider:applyLinearImpulse( 0, self.entity.dy )
-            self.entity:changeState('jump')
+    -- If player is in hurt state, limit his behaviour
+    if not self.entity.isHurting then
+        
+        -- Handle movement and right direction
+        self.inputX, self.inputY = p1_input:get('move')
+        self.entity:processXMovement(self.inputX)
+        self:assertRightXAndDirection(self.inputX)
+    
+        -- If jump was pressed and player is on ground, perform a jump
+        if p1_input:pressed('jump') then
+            if self.entity.isOnGround then
+                self.entity.collider:applyLinearImpulse( 0, self.entity.dy )
+                self.entity:changeState('jump')
+            end
         end
-    end
 
-    -- Following code is meant to be executed if player is
-    -- holding any item or weapon. If not, return here
-    if not self.entity.isHolding then return end
+        -- Following code is meant to be executed if player is
+        -- holding any item or weapon. If not, return here
+        if not self.entity.isHolding then return end
 
-    -- If player is not already attacking, attack
-    if p1_input:pressed('attack') then
-        if self.name ~= 'attack' then
-            self.entity:changeState('attack')
+        -- If player is not already attacking, attack
+        if p1_input:pressed('attack') then
+            if self.name ~= 'attack' then
+                self.entity:changeState('attack')
+            end
         end
     end
 
