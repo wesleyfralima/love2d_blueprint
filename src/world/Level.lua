@@ -23,6 +23,7 @@ function Level:init(def)
     self.enemys = {}
     self:createEnemys(levelInfo.enemys)
 
+    self.HUD = HUD(self.player)
 end
 
 function Level:update(dt)
@@ -53,6 +54,8 @@ function Level:update(dt)
             --gSounds['hit-player']:play()
             self.player:damage(1)
             self.player:goInvulnerable(1.5)
+
+            self.HUD:setCompletion('health', self.player.health/self.player.maxHealth)
 
             if self.player.health <= 0 then
                 -- self.player.collider:destroy()
@@ -85,6 +88,8 @@ function Level:render()
         -- self.world:draw()
 
     end)
+
+    self.HUD:render()
 end
 
 function Level:createWorld(info)

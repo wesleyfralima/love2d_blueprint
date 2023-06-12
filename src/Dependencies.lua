@@ -33,6 +33,9 @@ require 'src/gui/Menu'
 require 'src/gui/Panel'
 require 'src/gui/Selection'
 
+require 'src/HUD/Bar'
+require 'src/HUD/HUD'
+
 require 'src/states/BaseState'
 require 'src/states/StateStack'
 
@@ -103,6 +106,12 @@ gFonts = {
 }
 
 gTextures = {
+    ['HUD'] = {
+        ['heart'] = love.graphics.newImage('assets/img/HUD/heart.png'),
+        ['skull'] = love.graphics.newImage('assets/img/HUD/skull.png'),
+        ['bar'] = love.graphics.newImage('assets/img/HUD/bar.png'),
+    },
+
     ['bg_blue'] = love.graphics.newImage('assets/img/bg_blue.png'),
     ['bg_brown'] = love.graphics.newImage('assets/img/bg_brown.png'),
     ['bg_yellow'] = love.graphics.newImage('assets/img/bg_yellow.png'),

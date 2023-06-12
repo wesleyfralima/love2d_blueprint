@@ -10,6 +10,7 @@ function Entity:init(def)
     self.height = def.height
 
     self.health = def.health or 5
+    self.maxHealth = def.maxHealth or 5
 
     self.direction = def.direction
 
