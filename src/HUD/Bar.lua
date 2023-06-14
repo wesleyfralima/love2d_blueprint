@@ -12,7 +12,7 @@ function Bar:init(def)
     self.barY = self.imageY + math.floor(self.image:getHeight() / 2) - self.bar:getHeight()/2
 
     self.fillColor = def.fillColor
-    self.fillX = self.barX
+    self.fillX = self.barX - 1
     self.fillY = self.barY + 3
     self.completion = def.player.health / def.player.maxHealth
 end
