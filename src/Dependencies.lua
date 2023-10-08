@@ -59,8 +59,11 @@ require 'src/states/entity/player/PlayerSwordAttackState'
 require 'src/states/entity/player/PlayerWalkState'
 
 require 'src/states/game/PauseState'
+require 'src/states/game/SettingsState'
 require 'src/states/game/PlayState'
 require 'src/states/game/StartState'
+
+require 'src/states/settings/ControlsSettingsState'
 
 require 'src/world/Level'
 require 'src/world/level_defs'
@@ -78,6 +81,7 @@ p1_input = baton.new {
 
         -- menu related input
         interact        = {'key:return', 'button:a'},
+        back            = {'key:return', 'button:b'},
 
         -- movement input
         left            = {'key:left', 'key:a', 'axis:leftx-', 'button:dpleft'},
