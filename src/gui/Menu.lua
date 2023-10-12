@@ -1,14 +1,21 @@
 Menu = Class{}
 
 function Menu:init(def)
-    self.panel = Panel(def.x, def.y, def.width, def.height)
+    local width = def.width or MENU_WIDTH
+    local height = def.height or MENU_HEIGHT
+
+    local x = def.x or VIRTUAL_WIDTH / 2 - width / 2
+    local y = def.y or VIRTUAL_HEIGHT / 2 - height / 2
+
+    self.panel = Panel(x, y, width, height)
     
     self.selection = Selection {
         items = def.items,
-        x = def.x,
-        y = def.y,
-        width = def.width,
-        height = def.height,
+        buttons = def.buttons,
+        x = x,
+        y = y,
+        width = width,
+        height = height,
         font = def.font,
         canSelect = def.canSelect
     }

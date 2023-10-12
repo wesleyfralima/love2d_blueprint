@@ -4,14 +4,23 @@ function Selection:init(def)
     self.canSelect = def.canSelect
 
     self.items = def.items
+    self.buttons = def.buttons or {}
+
     self.x = def.x
     self.y = def.y
 
     self.height = def.height
     self.width = def.width
+
     self.font = def.font or gFonts['medium']
 
-    self.gapHeight = self.height / #self.items
+    if #self.buttons > 0 then
+        self.space = self.height * 0.2
+    else
+        self.space = 0
+    end
+
+    self.gapHeight = 1.3 * self.font:getHeight()
 
     self.currentSelection = 1
 end
@@ -39,7 +48,7 @@ function Selection:update(dt)
 end
 
 function Selection:render()
-    local currentY = self.y
+    local currentY = self.y + (self.height - self.space - #self.items*self.gapHeight) / 2
 
     for i = 1, #self.items do
         local paddedY = math.ceil(currentY + (self.gapHeight / 2) - self.font:getHeight() / 2)
@@ -55,5 +64,20 @@ function Selection:render()
         love.graphics.printf(self.items[i].text, self.x, paddedY, self.width, 'center')
 
         currentY = currentY + self.gapHeight
+    end
+
+    -- render the following if there is any button in the selection
+    if self.space ~= 0 then
+        local currentX = self.x + (self.width - 700) / 2
+
+        -- render buttons here
+        for i = 1, #self.buttons do 
+            love.graphics.printf(self.buttons[i].text, self.x + currentX, math.ceil(self.y + self.height - self.space + 3), self.width, 'center')
+            currentX = currentX + 100
+        end
+
+        -- draw horizontal line
+        love.graphics.setColor(gColors['Zomp'])
+        love.graphics.rectangle('fill', self.x + 10, self.y + self.height - self.space, self.width - 20, 2)
     end
 end
