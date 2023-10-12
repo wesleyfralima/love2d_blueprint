@@ -42,9 +42,5 @@ function SettingsState:update(dt)
 end
 
 function SettingsState:render()
-
-    love.graphics.setColor(0, 0, 0, .9)
-    love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, 3)
-
     self.menu:render()
 end
