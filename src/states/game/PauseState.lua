@@ -42,7 +42,7 @@ function PauseState:enter()
     game_paused = true
 
     -- if canExit was always true, pressing escape to enter this state would also quit the game
-    Timer.after(3 * delta_time, function() self.canExit = true end)
+    Timer.after(5 * delta_time, function() self.canExit = true end)
 end
 
 function PauseState:update(dt)
