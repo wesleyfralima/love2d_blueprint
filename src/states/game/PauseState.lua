@@ -40,9 +40,6 @@ end
 
 function PauseState:enter()
     game_paused = true
-
-    -- if canExit was always true, pressing escape to enter this state would also quit the game
-    Timer.after(5 * delta_time, function() self.canExit = true end)
 end
 
 function PauseState:update(dt)
@@ -50,12 +47,6 @@ function PauseState:update(dt)
 
     if p1_input:pressed('start') then
         gStateStack:pop()
-    end
-
-    if p1_input:pressed('escape') then
-        if self.canExit then
-            love.event.quit()
-        end
     end
 end
 
