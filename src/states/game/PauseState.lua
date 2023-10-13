@@ -30,19 +30,14 @@ function PauseState:init()
     }
 
     self.menu = Menu {
-        canSelect = true,
         items = items,
         buttons = self.buttons
     }
-
-    self.canSelect = false
 
 end
 
 function PauseState:enter()
     game_paused = true
-
-    Timer.after(30 * delta_time, function() self.canSelect = true end)
 end
 
 function PauseState:update(dt)
@@ -50,16 +45,6 @@ function PauseState:update(dt)
 
     if p1_input:pressed('start') then
         gStateStack:pop()
-    end
-
-    -- This is to avoid escaping or detecting a key too fast
-    if not self.canSelect then return end
-
-    -- Deal with buttons here
-    for i = 1, #self.buttons do
-        if p1_input:pressed(self.buttons[i].key) then
-            self.buttons[i].action()
-        end
     end
 end
 
