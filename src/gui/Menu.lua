@@ -21,7 +21,7 @@ function Menu:init(def)
         {
             text = '[ESC] Resume',
             key = 'escape',
-            action = function() gStateStack:pop() end
+            action = function() gStateStack:goToPlayState() end
         },
     }
     

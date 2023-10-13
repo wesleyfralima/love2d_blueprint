@@ -5,6 +5,14 @@ function StateStack:init()
 end
 
 function StateStack:update(dt)
+    -- If there is no state, return
+    -- This might be useful to always make PlayState be the first state, meaning
+    -- there is a PlayState active if and only if it is at self.states[1]. So if we
+    -- are at some StartState which is at self.states[1], we could easily pop that state and have no state 
+    -- for a frame until PlayState is set.
+    if #self.states < 1 then return end
+
+    -- Update last state if there is any
     self.states[#self.states]:update(dt)
 end
 
@@ -35,4 +43,9 @@ function StateStack:pop(numberOfStates)
         self.states[i]:exit()
         table.remove(self.states, i)
     end
+end
+
+function StateStack:goToPlayState()
+    -- This only works if PlayState is at self.states[1]
+    self:pop(#self.states - 1)
 end
