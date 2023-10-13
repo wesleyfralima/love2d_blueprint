@@ -8,39 +8,43 @@ function ControlsSettingsState:init()
         }
     }
 
-    local width = VIRTUAL_WIDTH - 20
-    local height = VIRTUAL_HEIGHT - 20
-    local x = VIRTUAL_WIDTH / 2 - width / 2
-    local y = VIRTUAL_HEIGHT / 2 - height / 2
-
-    self.menu = Menu {
-        centered = false,
-        canSelect = true,
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        items = items
+    self.buttons = {
+        {
+            text = '[Enter] Select',
+            key = 'interact',
+            action = function() return end
+        },
+        {
+            text = '[backspace] Back',
+            key = 'back',
+            action = function() gStateStack:pop() end
+        },
+        {
+            text = '[ESC] Resume',
+            key = 'escape',
+            action = function() gStateStack:pop(3) end
+        },
     }
 
-end
+    self.menu = Menu {
+        canSelect = true,
+        items = items,
+        buttons = self.buttons
+    }
 
-function ControlsSettingsState:enter()
-    
 end
 
 function ControlsSettingsState:update(dt)
     self.menu:update()
 
-    if p1_input:pressed('escape') then
-        gStateStack:pop()
+    -- Deal with buttons here
+    for i = 1, #self.buttons do
+        if p1_input:pressed(self.buttons[i].key) then
+            self.buttons[i].action()
+        end
     end
 end
 
 function ControlsSettingsState:render()
-
-    love.graphics.setColor(0, 0, 0, .9)
-    love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, 3)
-
     self.menu:render()
 end

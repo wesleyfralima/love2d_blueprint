@@ -11,33 +11,41 @@ function SettingsState:init()
             onSelect = function() gStateStack:pop() end
         }
     }
-
-    local width = VIRTUAL_WIDTH - 20
-    local height = VIRTUAL_HEIGHT - 20
-    local x = VIRTUAL_WIDTH / 2 - width / 2
-    local y = VIRTUAL_HEIGHT / 2 - height / 2
-
-    self.menu = Menu {
-        centered = false,
-        canSelect = true,
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        items = items
+    
+    self.buttons = {
+        {
+            text = '[Enter] Select',
+            key = 'interact',
+            action = function() return end
+        },
+        {
+            text = '[backspace] Back',
+            key = 'back',
+            action = function() gStateStack:pop() end
+        },
+        {
+            text = '[ESC] Resume',
+            key = 'escape',
+            action = function() gStateStack:pop(2) end
+        },
     }
 
-end
+    self.menu = Menu {
+        canSelect = true,
+        items = items,
+        buttons = self.buttons
+    }
 
-function SettingsState:enter()
-    
 end
 
 function SettingsState:update(dt)
     self.menu:update()
 
-    if p1_input:pressed('escape') then
-        gStateStack:pop()
+    -- Deal with buttons here
+    for i = 1, #self.buttons do
+        if p1_input:pressed(self.buttons[i].key) then
+            self.buttons[i].action()
+        end
     end
 end
 

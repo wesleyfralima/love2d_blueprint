@@ -25,7 +25,7 @@ function PauseState:init()
         {
             text = '[ESC] Resume',
             key = 'escape',
-            action = function() gStateStack:pop() end
+            action = function() gStateStack:pop(1) end
         },
     }
 

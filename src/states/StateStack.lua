@@ -27,7 +27,12 @@ function StateStack:push(state)
     state:enter()
 end
 
-function StateStack:pop()
-    self.states[#self.states]:exit()
-    table.remove(self.states)
+function StateStack:pop(numberOfStates)
+    local n = numberOfStates or 1
+    local endState = #self.states - n + 1
+
+    for i = #self.states, endState, -1 do
+        self.states[i]:exit()
+        table.remove(self.states, i)
+    end
 end
