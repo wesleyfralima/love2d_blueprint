@@ -1,7 +1,7 @@
 Selection = Class{}
 
 function Selection:init(def)
-    self.canSelect = def.canSelect
+    self.canSelect = def.canSelect or true
 
     self.items = def.items
     self.buttons = def.buttons or {}
