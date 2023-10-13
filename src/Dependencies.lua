@@ -63,6 +63,7 @@ require 'src/states/game/SettingsState'
 require 'src/states/game/PlayState'
 require 'src/states/game/StartState'
 
+require 'src/states/settings/BaseSettingsState'
 require 'src/states/settings/ControlsSettingsState'
 
 require 'src/world/Level'
