@@ -18,13 +18,13 @@ function PauseState:init()
 
     self.buttons = {
         {
-            text = '(ESC) Resume',
-            key = 'escape',
-            action = function() gStateStack:pop() end
+            text = '[Enter] Select',
+            key = 'interact',
+            action = function() return end
         },
         {
-            text = 'Back',
-            key = 'attack',
+            text = '[ESC] Resume',
+            key = 'escape',
             action = function() gStateStack:pop() end
         },
     }

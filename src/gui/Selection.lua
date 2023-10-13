@@ -13,6 +13,7 @@ function Selection:init(def)
     self.width = def.width
 
     self.font = def.font or gFonts['medium']
+    self.buttonsFont = gFonts['medium']
 
     if #self.buttons > 0 then
         self.space = self.height * 0.2
@@ -20,7 +21,8 @@ function Selection:init(def)
         self.space = 0
     end
 
-    self.gapHeight = 1.3 * self.font:getHeight()
+    self.gapHeight = math.ceil(1.3 * self.font:getHeight())
+    self.gapWidth = math.ceil(self.width / #self.buttons)
 
     self.currentSelection = 1
 end
@@ -56,7 +58,7 @@ function Selection:render()
         -- draw selection marker if we're at the right index
         if self.canSelect then
             if i == self.currentSelection then
-                love.graphics.draw(gTextures['cursor'], self.x - 8, paddedY)
+                love.graphics.draw(gTextures['cursor'], self.x + 115, paddedY)
             end
         end
 
@@ -68,12 +70,13 @@ function Selection:render()
 
     -- render the following if there is any button in the selection
     if self.space ~= 0 then
-        local currentX = self.x + (self.width - 700) / 2
+        local currentX = self.x
+        local currentY = math.ceil(self.y + self.height - (self.space + self.buttonsFont:getHeight()) / 2)
 
         -- render buttons here
-        for i = 1, #self.buttons do 
-            love.graphics.printf(self.buttons[i].text, self.x + currentX, math.ceil(self.y + self.height - self.space + 3), self.width, 'center')
-            currentX = currentX + 100
+        for i = 1, #self.buttons do
+            love.graphics.printf(self.buttons[i].text, currentX, currentY, self.gapWidth, 'center')
+            currentX = currentX + self.gapWidth
         end
 
         -- draw horizontal line
