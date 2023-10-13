@@ -7,3 +7,9 @@ end
 function BaseSettingsState:render()
     self.menu:render()
 end
+
+function BaseSettingsState:setMenu(items)
+    self.menu = Menu {
+        items = items
+    }
+end
