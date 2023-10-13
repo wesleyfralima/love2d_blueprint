@@ -37,6 +37,8 @@ require 'src/HUD/Bar'
 require 'src/HUD/HUD'
 
 require 'src/states/BaseState'
+
+require 'src/states/BaseSettingsState'
 require 'src/states/StateStack'
 
 require 'src/states/entity/EntityBaseState'
@@ -63,7 +65,6 @@ require 'src/states/game/SettingsState'
 require 'src/states/game/PlayState'
 require 'src/states/game/StartState'
 
-require 'src/states/settings/BaseSettingsState'
 require 'src/states/settings/ControlsSettingsState'
 
 require 'src/world/Level'
