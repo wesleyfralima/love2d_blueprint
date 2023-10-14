@@ -58,10 +58,17 @@ function Selection:render()
         -- draw selection marker if we're at the right index
         if self.canSelect then
             if i == self.currentSelection then
-                love.graphics.draw(gTextures['cursor'], self.x + 115, paddedY)
+                -- This is used to render the little hand
+                -- love.graphics.draw(gTextures['cursor'], self.x + 115, paddedY)
+
+                -- This is used to render the rectangle
+                love.graphics.setColor(gColors['Zomp'])
+                -- 160 is the width of the rectangle
+                love.graphics.rectangle('line', self.x + self.width/2 - 80, paddedY - 1, 160, self.font:getHeight() + 2, 5)
             end
         end
 
+        love.graphics.setColor(gColors['White'])
         love.graphics.setFont(self.font)
         love.graphics.printf(self.items[i].text, self.x, paddedY, self.width, 'center')
 
