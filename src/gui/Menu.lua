@@ -37,7 +37,7 @@ function Menu:init(def)
         font = def.font
     }
 
-    Timer.after(30 * delta_time, function() self.canSelect = true end)
+    Timer.after(30 * gDeltaTime, function() self.canSelect = true end)
 end
 
 function Menu:update(dt)

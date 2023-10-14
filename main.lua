@@ -20,8 +20,8 @@ function love.load()
     -- Pushing the first state of the game into the StateStack (can also be StartState or any other)
     gStateStack:push(PlayState()) -- must be changed later
 
-    game_paused = false
-    delta_time = 0
+    gGamePaused = false
+    gDeltaTime = 0
     gFullscreen = false
 end
 
@@ -33,7 +33,7 @@ end
 -- Love function that keeps track of pressed keys in last frame
 function love.keypressed(key)
     if key == 'escape' then
-        if not game_paused then
+        if not gGamePaused then
             gStateStack:push(PauseState())
         end
     end
@@ -52,7 +52,7 @@ end
 -- Normal love.update, which is executed once per frame
 function love.update(dt)
     -- Sometimes it is useful to use dt outside an update function
-    delta_time = dt
+    gDeltaTime = dt
 
     -- Updating the Timer variable. This is defined at Dependencies.lua
     Timer.update(dt)

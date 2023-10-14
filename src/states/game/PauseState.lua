@@ -37,7 +37,7 @@ function PauseState:init()
 end
 
 function PauseState:enter()
-    game_paused = true
+    gGamePaused = true
 end
 
 function PauseState:update(dt)
@@ -49,7 +49,7 @@ function PauseState:update(dt)
 end
 
 function PauseState:exit()
-    game_paused = false
+    gGamePaused = false
 end
 
 function PauseState:render()
